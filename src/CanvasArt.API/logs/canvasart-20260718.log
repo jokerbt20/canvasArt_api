@@ -1,0 +1,147 @@
+2026-07-18 09:26:04.670 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/auth/me - null null
+2026-07-18 09:26:04.701 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:05.056 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/auth/me - null null
+2026-07-18 09:26:05.058 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/slides - null null
+2026-07-18 09:26:05.472 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/paintings?isFeatured=true&pageSize=8&sortBy=createdAt&sortDir=desc - null null
+2026-07-18 09:26:05.546 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:05.540 +02:00 [INF] HTTP OPTIONS /api/auth/me responded 204 in 839.5814 ms
+2026-07-18 09:26:05.550 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:05.558 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/categories - null null
+2026-07-18 09:26:05.564 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/frames?page=1&pageSize=4&isActive=true - null null
+2026-07-18 09:26:05.583 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/settings?group=Contact - null null
+2026-07-18 09:26:05.621 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:05.625 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:05.631 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/auth/me - null null
+2026-07-18 09:26:05.601 +02:00 [INF] HTTP OPTIONS /api/auth/me responded 204 in 55.0067 ms
+2026-07-18 09:26:05.613 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/auth/me - 204 null null 941.9607ms
+2026-07-18 09:26:05.612 +02:00 [INF] HTTP OPTIONS /api/slides responded 204 in 61.7601 ms
+2026-07-18 09:26:05.601 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:05.742 +02:00 [INF] HTTP OPTIONS /api/paintings responded 204 in 141.1798 ms
+2026-07-18 09:26:05.729 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/slides - 204 null null 671.2768ms
+2026-07-18 09:26:05.664 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/auth/me - 204 null null 608.4004ms
+2026-07-18 09:26:05.936 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/paintings?isFeatured=true&pageSize=8&sortBy=createdAt&sortDir=desc - 204 null null 464.1857ms
+2026-07-18 09:26:05.638 +02:00 [INF] HTTP OPTIONS /api/categories responded 204 in 17.2190 ms
+2026-07-18 09:26:05.640 +02:00 [INF] HTTP OPTIONS /api/frames responded 204 in 15.3937 ms
+2026-07-18 09:26:05.637 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:05.943 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/paintings?isFeatured=true&pageSize=8&sortBy=createdAt&sortDir=desc - null null
+2026-07-18 09:26:06.007 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/categories - 204 null null 456.4241ms
+2026-07-18 09:26:06.035 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/categories - null null
+2026-07-18 09:26:06.011 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/frames?page=1&pageSize=4&isActive=true - 204 null null 447.6194ms
+2026-07-18 09:26:06.015 +02:00 [INF] HTTP OPTIONS /api/settings responded 204 in 378.7756 ms
+2026-07-18 09:26:06.036 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:05.653 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:06.090 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:06.042 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/frames?page=1&pageSize=4&isActive=true - null null
+2026-07-18 09:26:06.123 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/settings?group=Contact - null null
+2026-07-18 09:26:06.103 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/settings?group=Contact - 204 null null 520.8854ms
+2026-07-18 09:26:06.107 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-18 09:26:06.108 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-18 09:26:05.739 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/slides - null null
+2026-07-18 09:26:06.128 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-18 09:26:06.139 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:06.241 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:06.276 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+2026-07-18 09:26:06.281 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-18 09:26:06.264 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+2026-07-18 09:26:06.268 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+2026-07-18 09:26:06.270 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:06.282 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-18 09:26:06.315 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+2026-07-18 09:26:06.292 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+2026-07-18 09:26:06.299 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-18 09:26:06.303 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-07-18 09:26:06.305 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-18 09:26:06.287 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-18 09:26:06.316 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.SettingsController.Get (CanvasArt.API)'
+2026-07-18 09:26:06.317 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-18 09:26:06.318 +02:00 [INF] Route matched with {action = "List", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Paintings.PaintingQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-18 09:26:06.319 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-07-18 09:26:06.330 +02:00 [INF] Route matched with {action = "List", controller = "Frames"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Frames.FrameQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.FramesController (CanvasArt.API).
+2026-07-18 09:26:06.326 +02:00 [INF] Route matched with {action = "GetActive", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.CategoriesController (CanvasArt.API).
+2026-07-18 09:26:06.328 +02:00 [INF] Route matched with {action = "Get", controller = "Settings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(System.String, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.SettingsController (CanvasArt.API).
+2026-07-18 09:26:06.335 +02:00 [INF] HTTP GET /api/auth/me responded 401 in 681.3264 ms
+2026-07-18 09:26:06.323 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+2026-07-18 09:26:06.350 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/auth/me - 401 0 null 719.4833ms
+2026-07-18 09:26:06.352 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.SlidesController.GetActive (CanvasArt.API)'
+2026-07-18 09:26:06.356 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/auth/me - null null
+2026-07-18 09:26:06.356 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/auth/refresh - null null
+2026-07-18 09:26:06.360 +02:00 [INF] Route matched with {action = "GetActive", controller = "Slides"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.SlidesController (CanvasArt.API).
+2026-07-18 09:26:06.368 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:06.371 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:06.379 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-18 09:26:06.380 +02:00 [INF] HTTP OPTIONS /api/auth/refresh responded 204 in 9.3776 ms
+2026-07-18 09:26:06.386 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17.7.2026 22:17:29', Current time (UTC): '18.7.2026 07:26:06'.
+2026-07-18 09:26:06.389 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/auth/refresh - 204 null null 34.0786ms
+2026-07-18 09:26:06.390 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-07-18 09:26:06.391 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7153/api/auth/refresh - application/json 732
+2026-07-18 09:26:06.398 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-07-18 09:26:06.402 +02:00 [INF] CORS policy execution successful.
+2026-07-18 09:26:06.404 +02:00 [INF] HTTP GET /api/auth/me responded 401 in 35.7805 ms
+2026-07-18 09:26:06.405 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.AuthController.Refresh (CanvasArt.API)'
+2026-07-18 09:26:06.407 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/auth/me - 401 0 null 50.7525ms
+2026-07-18 09:26:06.408 +02:00 [INF] Route matched with {action = "Refresh", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Refresh(CanvasArt.API.Models.DTOs.Auth.RefreshTokenRequest, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.AuthController (CanvasArt.API).
+2026-07-18 09:26:07.382 +02:00 [INF] Executed action CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API) in 1039.9466ms
+2026-07-18 09:26:07.382 +02:00 [INF] Executed action CanvasArt.API.Controllers.FramesController.List (CanvasArt.API) in 1043.1958ms
+2026-07-18 09:26:07.383 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API) in 1051.0624ms
+2026-07-18 09:26:07.383 +02:00 [INF] Executed action CanvasArt.API.Controllers.SlidesController.GetActive (CanvasArt.API) in 1009.6573ms
+2026-07-18 09:26:07.386 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-18 09:26:07.388 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-18 09:26:07.389 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.SlidesController.GetActive (CanvasArt.API)'
+2026-07-18 09:26:07.391 +02:00 [ERR] HTTP GET /api/frames responded 500 in 1251.6691 ms
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at CanvasArt.API.Repository.SqlConnectionFactory.CreateOpenConnectionAsync(CancellationToken cancellationToken) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Repository\SqlConnectionFactory.cs:line 20
+   at CanvasArt.API.Repository.FrameRepository.QueryAsync(FrameQuery query, Boolean activeOnly, CancellationToken cancellationToken) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Repository\FrameRepository.cs:line 60
+   at CanvasArt.API.Services.FrameService.QueryAsync(FrameQuery query, Boolean activeOnly, CancellationToken cancellationToken) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Services\FrameService.cs:line 27
+   at CanvasArt.API.Controllers.FramesController.List(FrameQuery query, CancellationToken ct) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Controllers\FramesController.cs:line 20
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)

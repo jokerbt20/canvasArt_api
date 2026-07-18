@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CanvasArt.API/CanvasArt.API.csproj" />
+    <Project Path="src/CanvasArt.Application/CanvasArt.Application.csproj" />
+    <Project Path="src/CanvasArt.Domain/CanvasArt.Domain.csproj" />
+    <Project Path="src/CanvasArt.Infrastructure/CanvasArt.Infrastructure.csproj" />
+  </Folder>
+</Solution>

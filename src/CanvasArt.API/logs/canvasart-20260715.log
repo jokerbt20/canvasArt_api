@@ -1,0 +1,800 @@
+2026-07-15 20:28:11.279 +02:00 [INF] CanvasArt API starting up
+2026-07-15 20:28:11.309 +02:00 [DBG] Hosting starting
+2026-07-15 20:28:11.339 +02:00 [INF] User profile is available. Using 'C:\Users\joker\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-15 20:28:11.507 +02:00 [INF] Now listening on: https://localhost:7153
+2026-07-15 20:28:11.510 +02:00 [INF] Now listening on: http://localhost:5167
+2026-07-15 20:28:11.547 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-15 20:28:11.549 +02:00 [INF] Hosting environment: Development
+2026-07-15 20:28:11.551 +02:00 [INF] Content root path: D:\CanvasArt project\WebApplication1\src\CanvasArt.API
+2026-07-15 20:28:11.552 +02:00 [DBG] Hosting started
+2026-07-15 20:28:12.186 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger - null null
+2026-07-15 20:28:12.326 +02:00 [INF] HTTP GET /swagger responded 301 in 2.5753 ms
+2026-07-15 20:28:12.338 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger - 301 null null 157.6787ms
+2026-07-15 20:28:12.342 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/index.html - null null
+2026-07-15 20:28:12.378 +02:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2026-07-15 20:28:12.407 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 56.0444 ms
+2026-07-15 20:28:12.409 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/swagger-ui-standalone-preset.js - null null
+2026-07-15 20:28:12.409 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/swagger-ui-bundle.js - null null
+2026-07-15 20:28:12.411 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-15 20:28:12.409 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/swagger-ui.css - null null
+2026-07-15 20:28:12.409 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/_vs/browserLink - null null
+2026-07-15 20:28:12.445 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/_framework/aspnetcore-browser-refresh.js - 200 14931 application/javascript; charset=utf-8 34.3423ms
+2026-07-15 20:28:12.415 +02:00 [DBG] Response markup was updated to include Browser Link script injection.
+2026-07-15 20:28:12.459 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-07-15 20:28:12.459 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/index.html - 200 null text/html;charset=utf-8 117.4938ms
+2026-07-15 20:28:12.459 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-07-15 20:28:12.465 +02:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 26.7191 ms
+2026-07-15 20:28:12.473 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-07-15 20:28:12.474 +02:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 54.5184 ms
+2026-07-15 20:28:12.478 +02:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 54.9148 ms
+2026-07-15 20:28:12.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 71.8419ms
+2026-07-15 20:28:12.476 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/swagger-ui.css - 200 152034 text/css 67.49ms
+2026-07-15 20:28:12.483 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 74.4827ms
+2026-07-15 20:28:12.519 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/_vs/browserLink - 200 null text/javascript; charset=UTF-8 109.9113ms
+2026-07-15 20:28:12.574 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - null null
+2026-07-15 20:28:12.588 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/favicon-32x32.png - null null
+2026-07-15 20:28:12.592 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-07-15 20:28:12.594 +02:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 2.0601 ms
+2026-07-15 20:28:12.597 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/favicon-32x32.png - 200 628 image/png 9.3487ms
+2026-07-15 20:28:12.603 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 24.1687 ms
+2026-07-15 20:28:12.607 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.0869ms
+2026-07-15 20:28:58.607 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7153/api/auth/register - application/json 143
+2026-07-15 20:28:58.616 +02:00 [INF] CORS policy execution successful.
+2026-07-15 20:28:59.983 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.AuthController.Register (CanvasArt.API)'
+2026-07-15 20:29:00.000 +02:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(CanvasArt.API.Models.DTOs.Auth.RegisterRequest, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.AuthController (CanvasArt.API).
+2026-07-15 20:29:02.818 +02:00 [INF] Executing ObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.DTOs.Auth.AuthResponse, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 20:29:02.839 +02:00 [INF] Executed action CanvasArt.API.Controllers.AuthController.Register (CanvasArt.API) in 2835.1476ms
+2026-07-15 20:29:02.840 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.AuthController.Register (CanvasArt.API)'
+2026-07-15 20:29:02.842 +02:00 [INF] HTTP POST /api/auth/register responded 201 in 4226.2320 ms
+2026-07-15 20:29:02.843 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7153/api/auth/register - 201 null application/json; charset=utf-8 4236.4027ms
+2026-07-15 20:30:15.689 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7153/api/auth/login - application/json 70
+2026-07-15 20:30:15.700 +02:00 [INF] CORS policy execution successful.
+2026-07-15 20:30:15.702 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API)'
+2026-07-15 20:30:15.749 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(CanvasArt.API.Models.DTOs.Auth.LoginRequest, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.AuthController (CanvasArt.API).
+2026-07-15 20:30:16.213 +02:00 [INF] Executed action CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API) in 461.6747ms
+2026-07-15 20:30:16.216 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API)'
+2026-07-15 20:30:16.218 +02:00 [ERR] HTTP POST /api/auth/login responded 500 in 517.5048 ms
+CanvasArt.API.Models.Common.UnauthorizedException: Invalid email or password.
+   at CanvasArt.API.Services.AuthService.LoginAsync(LoginRequest request, String ip, CancellationToken cancellationToken) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Services\AuthService.cs:line 69
+   at CanvasArt.API.Controllers.AuthController.Login(LoginRequest request, CancellationToken ct) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Controllers\AuthController.cs:line 25
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-07-15 20:30:16.305 +02:00 [WRN] Handled application error: Invalid email or password.
+CanvasArt.API.Models.Common.UnauthorizedException: Invalid email or password.
+   at CanvasArt.API.Services.AuthService.LoginAsync(LoginRequest request, String ip, CancellationToken cancellationToken) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Services\AuthService.cs:line 69
+   at CanvasArt.API.Controllers.AuthController.Login(LoginRequest request, CancellationToken ct) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Controllers\AuthController.cs:line 25
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at CanvasArt.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Middleware\GlobalExceptionMiddleware.cs:line 29
+2026-07-15 20:30:16.312 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7153/api/auth/login - 401 null application/json 623.7451ms
+2026-07-15 20:30:48.042 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7153/api/auth/login - application/json 70
+2026-07-15 20:30:48.050 +02:00 [INF] CORS policy execution successful.
+2026-07-15 20:30:48.052 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API)'
+2026-07-15 20:30:48.055 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(CanvasArt.API.Models.DTOs.Auth.LoginRequest, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.AuthController (CanvasArt.API).
+2026-07-15 20:30:48.792 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.DTOs.Auth.AuthResponse, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 20:30:48.794 +02:00 [INF] Executed action CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API) in 736.9102ms
+2026-07-15 20:30:48.796 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API)'
+2026-07-15 20:30:48.797 +02:00 [INF] HTTP POST /api/auth/login responded 200 in 747.8345 ms
+2026-07-15 20:30:48.798 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7153/api/auth/login - 200 null application/json; charset=utf-8 756.1063ms
+2026-07-15 20:40:52.237 +02:00 [INF] CanvasArt API starting up
+2026-07-15 20:40:52.266 +02:00 [DBG] Hosting starting
+2026-07-15 20:40:52.288 +02:00 [INF] User profile is available. Using 'C:\Users\joker\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-15 20:40:52.417 +02:00 [INF] Now listening on: https://localhost:7153
+2026-07-15 20:40:52.418 +02:00 [INF] Now listening on: http://localhost:5167
+2026-07-15 20:40:52.458 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-15 20:40:52.461 +02:00 [INF] Hosting environment: Development
+2026-07-15 20:40:52.462 +02:00 [INF] Content root path: D:\CanvasArt project\WebApplication1\src\CanvasArt.API
+2026-07-15 20:40:52.464 +02:00 [DBG] Hosting started
+2026-07-15 20:40:53.130 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/index.html - null null
+2026-07-15 20:40:53.270 +02:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2026-07-15 20:40:53.303 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 63.9906 ms
+2026-07-15 20:40:53.306 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-15 20:40:53.306 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/_vs/browserLink - null null
+2026-07-15 20:40:53.310 +02:00 [DBG] Response markup was updated to include Browser Link script injection.
+2026-07-15 20:40:53.322 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/_framework/aspnetcore-browser-refresh.js - 200 14931 application/javascript; charset=utf-8 16.1269ms
+2026-07-15 20:40:53.324 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/index.html - 200 null text/html;charset=utf-8 198.3974ms
+2026-07-15 20:40:53.349 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/_vs/browserLink - 200 null text/javascript; charset=UTF-8 43.6838ms
+2026-07-15 20:40:53.435 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - null null
+2026-07-15 20:40:53.461 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 21.4219 ms
+2026-07-15 20:40:53.465 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 30.1715ms
+2026-07-15 20:41:28.471 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7153/api/auth/login - application/json 70
+2026-07-15 20:41:28.483 +02:00 [INF] CORS policy execution successful.
+2026-07-15 20:41:28.532 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API)'
+2026-07-15 20:41:28.564 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(CanvasArt.API.Models.DTOs.Auth.LoginRequest, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.AuthController (CanvasArt.API).
+2026-07-15 20:41:30.621 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.DTOs.Auth.AuthResponse, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 20:41:30.655 +02:00 [INF] Executed action CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API) in 2082.2647ms
+2026-07-15 20:41:30.658 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API)'
+2026-07-15 20:41:30.662 +02:00 [INF] HTTP POST /api/auth/login responded 200 in 2180.6551 ms
+2026-07-15 20:41:30.663 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7153/api/auth/login - 200 null application/json; charset=utf-8 2197.5208ms
+2026-07-15 21:00:37.999 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/slideshow - null null
+2026-07-15 21:00:38.001 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories/featured - null null
+2026-07-15 21:00:38.002 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/promotions/active - null null
+2026-07-15 21:00:38.008 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:38.015 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:38.002 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/instagram - null null
+2026-07-15 21:00:38.018 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:38.014 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:38.017 +02:00 [INF] HTTP GET //api/promotions/active responded 404 in 1.8795 ms
+2026-07-15 21:00:38.017 +02:00 [INF] HTTP GET //api/content/slideshow responded 404 in 13.1062 ms
+2026-07-15 21:00:37.999 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings/featured - null null
+2026-07-15 21:00:38.020 +02:00 [INF] HTTP GET //api/content/instagram responded 404 in 1.6847 ms
+2026-07-15 21:00:38.003 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/frames - null null
+2026-07-15 21:00:38.011 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/testimonials - null null
+2026-07-15 21:00:38.026 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/promotions/active - 404 0 null 24.2544ms
+2026-07-15 21:00:38.026 +02:00 [INF] HTTP GET //api/categories/featured responded 404 in 13.5696 ms
+2026-07-15 21:00:38.027 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/slideshow - 404 0 null 28.0758ms
+2026-07-15 21:00:38.029 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:38.030 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/instagram - 404 0 null 28.3797ms
+2026-07-15 21:00:38.031 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:38.033 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:38.035 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories/featured - 404 0 null 34.5913ms
+2026-07-15 21:00:38.035 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/promotions/active, Response status code: 404
+2026-07-15 21:00:38.037 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/slideshow, Response status code: 404
+2026-07-15 21:00:38.038 +02:00 [INF] HTTP GET //api/paintings/featured responded 404 in 8.8557 ms
+2026-07-15 21:00:38.039 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/instagram, Response status code: 404
+2026-07-15 21:00:38.040 +02:00 [INF] HTTP GET //api/frames responded 404 in 8.4537 ms
+2026-07-15 21:00:38.040 +02:00 [INF] HTTP GET //api/customers/testimonials responded 404 in 7.6035 ms
+2026-07-15 21:00:38.042 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories/featured, Response status code: 404
+2026-07-15 21:00:38.044 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings/featured - 404 0 null 45.0574ms
+2026-07-15 21:00:38.046 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/frames - 404 0 null 43.375ms
+2026-07-15 21:00:38.047 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/testimonials - 404 0 null 36.6204ms
+2026-07-15 21:00:38.050 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings/featured, Response status code: 404
+2026-07-15 21:00:38.051 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/frames, Response status code: 404
+2026-07-15 21:00:38.053 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/testimonials, Response status code: 404
+2026-07-15 21:00:39.044 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/promotions/active - null null
+2026-07-15 21:00:39.044 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/instagram - null null
+2026-07-15 21:00:39.047 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:39.048 +02:00 [INF] HTTP GET //api/content/instagram responded 404 in 0.3623 ms
+2026-07-15 21:00:39.048 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/instagram - 404 0 null 3.8048ms
+2026-07-15 21:00:39.049 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/instagram, Response status code: 404
+2026-07-15 21:00:39.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories/featured - null null
+2026-07-15 21:00:39.052 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:39.053 +02:00 [INF] HTTP GET //api/categories/featured responded 404 in 1.1727 ms
+2026-07-15 21:00:39.054 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories/featured - 404 0 null 9.4569ms
+2026-07-15 21:00:39.046 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:39.058 +02:00 [INF] HTTP GET //api/promotions/active responded 404 in 11.8586 ms
+2026-07-15 21:00:39.059 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/promotions/active - 404 0 null 14.7506ms
+2026-07-15 21:00:39.057 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/testimonials - null null
+2026-07-15 21:00:39.062 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:39.062 +02:00 [INF] HTTP GET //api/customers/testimonials responded 404 in 0.3890 ms
+2026-07-15 21:00:39.063 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/testimonials - 404 0 null 5.8538ms
+2026-07-15 21:00:39.064 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/testimonials, Response status code: 404
+2026-07-15 21:00:39.061 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/promotions/active, Response status code: 404
+2026-07-15 21:00:39.057 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/frames - null null
+2026-07-15 21:00:39.066 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:39.067 +02:00 [INF] HTTP GET //api/frames responded 404 in 0.5778 ms
+2026-07-15 21:00:39.057 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings/featured - null null
+2026-07-15 21:00:39.070 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:39.071 +02:00 [INF] HTTP GET //api/paintings/featured responded 404 in 0.2798 ms
+2026-07-15 21:00:39.071 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings/featured - 404 0 null 14.3683ms
+2026-07-15 21:00:39.058 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories/featured, Response status code: 404
+2026-07-15 21:00:39.044 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/slideshow - null null
+2026-07-15 21:00:39.069 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/frames - 404 0 null 12.2382ms
+2026-07-15 21:00:39.082 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/frames, Response status code: 404
+2026-07-15 21:00:39.081 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:39.083 +02:00 [INF] HTTP GET //api/content/slideshow responded 404 in 1.9625 ms
+2026-07-15 21:00:39.084 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/slideshow - 404 0 null 40.1309ms
+2026-07-15 21:00:39.086 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/slideshow, Response status code: 404
+2026-07-15 21:00:39.075 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings/featured, Response status code: 404
+2026-07-15 21:00:56.468 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories - null null
+2026-07-15 21:00:56.468 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - null null
+2026-07-15 21:00:56.470 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:56.472 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:56.473 +02:00 [INF] HTTP GET //api/categories responded 404 in 2.7962 ms
+2026-07-15 21:00:56.474 +02:00 [INF] HTTP GET //api/paintings responded 404 in 1.6234 ms
+2026-07-15 21:00:56.475 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories - 404 0 null 7.6796ms
+2026-07-15 21:00:56.477 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - 404 0 null 8.8521ms
+2026-07-15 21:00:56.479 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories, Response status code: 404
+2026-07-15 21:00:56.482 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings, Response status code: 404
+2026-07-15 21:00:57.488 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - null null
+2026-07-15 21:00:57.488 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories - null null
+2026-07-15 21:00:57.490 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:57.491 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:00:57.492 +02:00 [INF] HTTP GET //api/paintings responded 404 in 1.8514 ms
+2026-07-15 21:00:57.493 +02:00 [INF] HTTP GET //api/categories responded 404 in 1.4405 ms
+2026-07-15 21:00:57.494 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - 404 0 null 5.7909ms
+2026-07-15 21:00:57.495 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories - 404 0 null 6.8952ms
+2026-07-15 21:00:57.496 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings, Response status code: 404
+2026-07-15 21:00:57.497 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories, Response status code: 404
+2026-07-15 21:01:14.642 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/slideshow - null null
+2026-07-15 21:01:14.643 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/frames - null null
+2026-07-15 21:01:14.642 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories/featured - null null
+2026-07-15 21:01:14.643 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/testimonials - null null
+2026-07-15 21:01:14.642 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/promotions/active - null null
+2026-07-15 21:01:14.642 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings/featured - null null
+2026-07-15 21:01:14.643 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/instagram - null null
+2026-07-15 21:01:14.647 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:14.649 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:14.651 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:14.653 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:14.655 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:14.657 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:14.658 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:14.659 +02:00 [INF] HTTP GET //api/content/slideshow responded 404 in 11.6219 ms
+2026-07-15 21:01:14.659 +02:00 [INF] HTTP GET //api/frames responded 404 in 10.1899 ms
+2026-07-15 21:01:14.659 +02:00 [INF] HTTP GET //api/categories/featured responded 404 in 8.4008 ms
+2026-07-15 21:01:14.664 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/frames - 404 0 null 21.7297ms
+2026-07-15 21:01:14.666 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories/featured - 404 0 null 23.3473ms
+2026-07-15 21:01:14.660 +02:00 [INF] HTTP GET //api/customers/testimonials responded 404 in 6.6135 ms
+2026-07-15 21:01:14.661 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/slideshow - 404 0 null 19.2841ms
+2026-07-15 21:01:14.660 +02:00 [INF] HTTP GET //api/promotions/active responded 404 in 4.5642 ms
+2026-07-15 21:01:14.661 +02:00 [INF] HTTP GET //api/content/instagram responded 404 in 2.5941 ms
+2026-07-15 21:01:14.660 +02:00 [INF] HTTP GET //api/paintings/featured responded 404 in 3.5846 ms
+2026-07-15 21:01:14.668 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/frames, Response status code: 404
+2026-07-15 21:01:14.670 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories/featured, Response status code: 404
+2026-07-15 21:01:14.671 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/testimonials - 404 0 null 27.8287ms
+2026-07-15 21:01:14.673 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/slideshow, Response status code: 404
+2026-07-15 21:01:14.674 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/promotions/active - 404 0 null 32.0983ms
+2026-07-15 21:01:14.675 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/instagram - 404 0 null 32.5066ms
+2026-07-15 21:01:14.677 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings/featured - 404 0 null 34.3876ms
+2026-07-15 21:01:14.681 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/testimonials, Response status code: 404
+2026-07-15 21:01:14.685 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/promotions/active, Response status code: 404
+2026-07-15 21:01:14.686 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/instagram, Response status code: 404
+2026-07-15 21:01:14.689 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings/featured, Response status code: 404
+2026-07-15 21:01:15.672 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories/featured - null null
+2026-07-15 21:01:15.672 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/frames - null null
+2026-07-15 21:01:15.676 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:15.675 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/testimonials - null null
+2026-07-15 21:01:15.676 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:15.679 +02:00 [INF] HTTP GET //api/categories/featured responded 404 in 3.9431 ms
+2026-07-15 21:01:15.680 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories/featured - 404 0 null 7.9517ms
+2026-07-15 21:01:15.681 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories/featured, Response status code: 404
+2026-07-15 21:01:15.672 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/slideshow - null null
+2026-07-15 21:01:15.683 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:15.679 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:15.685 +02:00 [INF] HTTP GET //api/customers/testimonials responded 404 in 5.6330 ms
+2026-07-15 21:01:15.686 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/testimonials - 404 0 null 10.5797ms
+2026-07-15 21:01:15.686 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/testimonials, Response status code: 404
+2026-07-15 21:01:15.677 +02:00 [INF] HTTP GET //api/frames responded 404 in 0.3141 ms
+2026-07-15 21:01:15.684 +02:00 [INF] HTTP GET //api/content/slideshow responded 404 in 0.4960 ms
+2026-07-15 21:01:15.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/instagram - null null
+2026-07-15 21:01:15.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings/featured - null null
+2026-07-15 21:01:15.702 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:15.703 +02:00 [INF] HTTP GET //api/paintings/featured responded 404 in 0.4240 ms
+2026-07-15 21:01:15.700 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/slideshow - 404 0 null 27.9778ms
+2026-07-15 21:01:15.702 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:15.708 +02:00 [INF] HTTP GET //api/content/instagram responded 404 in 6.0107 ms
+2026-07-15 21:01:15.697 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/frames - 404 0 null 24.7061ms
+2026-07-15 21:01:15.704 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings/featured - 404 0 null 13.7196ms
+2026-07-15 21:01:15.712 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings/featured, Response status code: 404
+2026-07-15 21:01:15.707 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/slideshow, Response status code: 404
+2026-07-15 21:01:15.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/promotions/active - null null
+2026-07-15 21:01:15.709 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/instagram - 404 0 null 18.754ms
+2026-07-15 21:01:15.711 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/frames, Response status code: 404
+2026-07-15 21:01:15.716 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:15.717 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/instagram, Response status code: 404
+2026-07-15 21:01:15.719 +02:00 [INF] HTTP GET //api/promotions/active responded 404 in 3.5989 ms
+2026-07-15 21:01:15.721 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/promotions/active - 404 0 null 32.1819ms
+2026-07-15 21:01:15.723 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/promotions/active, Response status code: 404
+2026-07-15 21:01:17.002 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - null null
+2026-07-15 21:01:17.002 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories - null null
+2026-07-15 21:01:17.006 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:17.008 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:17.009 +02:00 [INF] HTTP GET //api/paintings responded 404 in 3.5848 ms
+2026-07-15 21:01:17.010 +02:00 [INF] HTTP GET //api/categories responded 404 in 1.9960 ms
+2026-07-15 21:01:17.012 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - 404 0 null 10.1291ms
+2026-07-15 21:01:17.014 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories - 404 0 null 12.3996ms
+2026-07-15 21:01:17.016 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings, Response status code: 404
+2026-07-15 21:01:17.018 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories, Response status code: 404
+2026-07-15 21:01:18.024 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - null null
+2026-07-15 21:01:18.024 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories - null null
+2026-07-15 21:01:18.027 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:18.027 +02:00 [INF] HTTP GET //api/categories responded 404 in 0.3121 ms
+2026-07-15 21:01:18.028 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories - 404 0 null 3.5215ms
+2026-07-15 21:01:18.029 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories, Response status code: 404
+2026-07-15 21:01:18.026 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:18.029 +02:00 [INF] HTTP GET //api/paintings responded 404 in 3.3057 ms
+2026-07-15 21:01:18.030 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - 404 0 null 6.0567ms
+2026-07-15 21:01:18.031 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings, Response status code: 404
+2026-07-15 21:01:21.184 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/projects - null null
+2026-07-15 21:01:21.184 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/testimonials - null null
+2026-07-15 21:01:21.186 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:21.187 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:21.188 +02:00 [INF] HTTP GET //api/customers/projects responded 404 in 1.9020 ms
+2026-07-15 21:01:21.189 +02:00 [INF] HTTP GET //api/customers/testimonials responded 404 in 1.6366 ms
+2026-07-15 21:01:21.190 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/projects - 404 0 null 7.2693ms
+2026-07-15 21:01:21.192 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/testimonials - 404 0 null 8.5404ms
+2026-07-15 21:01:21.196 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/projects, Response status code: 404
+2026-07-15 21:01:21.199 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/testimonials, Response status code: 404
+2026-07-15 21:01:22.210 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/projects - null null
+2026-07-15 21:01:22.210 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/testimonials - null null
+2026-07-15 21:01:22.215 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:22.218 +02:00 [INF] HTTP GET //api/customers/projects responded 404 in 2.9485 ms
+2026-07-15 21:01:22.220 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/projects - 404 0 null 10.4053ms
+2026-07-15 21:01:22.224 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/projects, Response status code: 404
+2026-07-15 21:01:22.218 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:22.225 +02:00 [INF] HTTP GET //api/customers/testimonials responded 404 in 7.2735 ms
+2026-07-15 21:01:22.225 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/testimonials - 404 0 null 15.1155ms
+2026-07-15 21:01:22.226 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/testimonials, Response status code: 404
+2026-07-15 21:01:26.808 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/promotions - null null
+2026-07-15 21:01:26.810 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:26.811 +02:00 [INF] HTTP GET //api/promotions responded 404 in 1.2019 ms
+2026-07-15 21:01:26.813 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/promotions - 404 0 null 4.9812ms
+2026-07-15 21:01:26.815 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/promotions, Response status code: 404
+2026-07-15 21:01:27.822 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/promotions - null null
+2026-07-15 21:01:27.823 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:27.823 +02:00 [INF] HTTP GET //api/promotions responded 404 in 0.3443 ms
+2026-07-15 21:01:27.824 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/promotions - 404 0 null 1.9766ms
+2026-07-15 21:01:27.825 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/promotions, Response status code: 404
+2026-07-15 21:01:28.969 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/contact-info - null null
+2026-07-15 21:01:28.974 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:28.975 +02:00 [INF] HTTP GET //api/content/contact-info responded 404 in 1.1459 ms
+2026-07-15 21:01:28.977 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/contact-info - 404 0 null 8.4326ms
+2026-07-15 21:01:28.979 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/contact-info, Response status code: 404
+2026-07-15 21:01:29.988 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/contact-info - null null
+2026-07-15 21:01:29.992 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:29.992 +02:00 [INF] HTTP GET //api/content/contact-info responded 404 in 0.4539 ms
+2026-07-15 21:01:29.993 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/contact-info - 404 0 null 4.8359ms
+2026-07-15 21:01:29.995 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/contact-info, Response status code: 404
+2026-07-15 21:01:37.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings/featured - null null
+2026-07-15 21:01:37.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/promotions/active - null null
+2026-07-15 21:01:37.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories/featured - null null
+2026-07-15 21:01:37.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/frames - null null
+2026-07-15 21:01:37.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/slideshow - null null
+2026-07-15 21:01:37.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/instagram - null null
+2026-07-15 21:01:37.384 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:37.385 +02:00 [INF] HTTP GET //api/content/instagram responded 404 in 0.3565 ms
+2026-07-15 21:01:37.385 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/instagram - 404 0 null 23.9097ms
+2026-07-15 21:01:37.374 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:37.371 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:37.391 +02:00 [INF] HTTP GET //api/paintings/featured responded 404 in 19.7258 ms
+2026-07-15 21:01:37.377 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:37.392 +02:00 [INF] HTTP GET //api/categories/featured responded 404 in 15.3181 ms
+2026-07-15 21:01:37.383 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:37.395 +02:00 [INF] HTTP GET //api/content/slideshow responded 404 in 11.1288 ms
+2026-07-15 21:01:37.395 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/slideshow - 404 0 null 34.4923ms
+2026-07-15 21:01:37.393 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories/featured - 404 0 null 32.2762ms
+2026-07-15 21:01:37.400 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories/featured, Response status code: 404
+2026-07-15 21:01:37.387 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/instagram, Response status code: 404
+2026-07-15 21:01:37.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/testimonials - null null
+2026-07-15 21:01:37.402 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:37.404 +02:00 [INF] HTTP GET //api/customers/testimonials responded 404 in 1.0827 ms
+2026-07-15 21:01:37.404 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/testimonials - 404 0 null 43.4688ms
+2026-07-15 21:01:37.406 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/testimonials, Response status code: 404
+2026-07-15 21:01:37.388 +02:00 [INF] HTTP GET //api/promotions/active responded 404 in 13.6031 ms
+2026-07-15 21:01:37.407 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/promotions/active - 404 0 null 46.3067ms
+2026-07-15 21:01:37.408 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/promotions/active, Response status code: 404
+2026-07-15 21:01:37.379 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:37.392 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings/featured - 404 0 null 31.388ms
+2026-07-15 21:01:37.396 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/slideshow, Response status code: 404
+2026-07-15 21:01:37.414 +02:00 [INF] HTTP GET //api/frames responded 404 in 35.1888 ms
+2026-07-15 21:01:37.418 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings/featured, Response status code: 404
+2026-07-15 21:01:37.426 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/frames - 404 0 null 65.001ms
+2026-07-15 21:01:37.431 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/frames, Response status code: 404
+2026-07-15 21:01:38.407 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/instagram - null null
+2026-07-15 21:01:38.407 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings/featured - null null
+2026-07-15 21:01:38.407 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories/featured - null null
+2026-07-15 21:01:38.407 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/content/slideshow - null null
+2026-07-15 21:01:38.409 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:38.411 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:38.413 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:38.414 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:38.415 +02:00 [INF] HTTP GET //api/content/instagram responded 404 in 5.7527 ms
+2026-07-15 21:01:38.415 +02:00 [INF] HTTP GET //api/paintings/featured responded 404 in 4.3835 ms
+2026-07-15 21:01:38.416 +02:00 [INF] HTTP GET //api/categories/featured responded 404 in 2.4967 ms
+2026-07-15 21:01:38.420 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings/featured - 404 0 null 12.6277ms
+2026-07-15 21:01:38.418 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/instagram - 404 0 null 11.5381ms
+2026-07-15 21:01:38.417 +02:00 [INF] HTTP GET //api/content/slideshow responded 404 in 3.1935 ms
+2026-07-15 21:01:38.422 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/promotions/active - null null
+2026-07-15 21:01:38.422 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/customers/testimonials - null null
+2026-07-15 21:01:38.422 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories/featured - 404 0 null 14.5702ms
+2026-07-15 21:01:38.425 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings/featured, Response status code: 404
+2026-07-15 21:01:38.428 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/instagram, Response status code: 404
+2026-07-15 21:01:38.430 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/content/slideshow - 404 0 null 22.5857ms
+2026-07-15 21:01:38.433 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/frames - null null
+2026-07-15 21:01:38.433 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:38.435 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:38.439 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories/featured, Response status code: 404
+2026-07-15 21:01:38.444 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/content/slideshow, Response status code: 404
+2026-07-15 21:01:38.446 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:01:38.446 +02:00 [INF] HTTP GET //api/promotions/active responded 404 in 13.7153 ms
+2026-07-15 21:01:38.447 +02:00 [INF] HTTP GET //api/customers/testimonials responded 404 in 12.0296 ms
+2026-07-15 21:01:38.449 +02:00 [INF] HTTP GET //api/frames responded 404 in 3.3606 ms
+2026-07-15 21:01:38.450 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/promotions/active - 404 0 null 28.0436ms
+2026-07-15 21:01:38.450 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/customers/testimonials - 404 0 null 29.0054ms
+2026-07-15 21:01:38.452 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/frames - 404 0 null 19.4027ms
+2026-07-15 21:01:38.457 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/promotions/active, Response status code: 404
+2026-07-15 21:01:38.459 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/customers/testimonials, Response status code: 404
+2026-07-15 21:01:38.460 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/frames, Response status code: 404
+2026-07-15 21:02:44.910 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - null null
+2026-07-15 21:02:44.914 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories - null null
+2026-07-15 21:02:44.920 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:02:44.922 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:02:44.923 +02:00 [INF] HTTP GET //api/paintings responded 404 in 2.6861 ms
+2026-07-15 21:02:44.925 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - 404 0 null 14.5028ms
+2026-07-15 21:02:44.923 +02:00 [INF] HTTP GET //api/categories responded 404 in 1.0992 ms
+2026-07-15 21:02:44.930 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings, Response status code: 404
+2026-07-15 21:02:44.931 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories - 404 0 null 16.94ms
+2026-07-15 21:02:44.939 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories, Response status code: 404
+2026-07-15 21:02:45.948 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - null null
+2026-07-15 21:02:45.951 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153//api/categories - null null
+2026-07-15 21:02:46.000 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:02:46.003 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:02:46.004 +02:00 [INF] HTTP GET //api/categories responded 404 in 2.5326 ms
+2026-07-15 21:02:46.003 +02:00 [INF] HTTP GET //api/paintings responded 404 in 3.3018 ms
+2026-07-15 21:02:46.008 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/paintings?page=1&pageSize=12&sort=newest - 404 0 null 60.8138ms
+2026-07-15 21:02:46.006 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153//api/categories - 404 0 null 55.223ms
+2026-07-15 21:02:46.013 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/categories, Response status code: 404
+2026-07-15 21:02:46.012 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153//api/paintings, Response status code: 404
+2026-07-15 21:03:20.858 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/paintings?page=1&pageSize=12&sort=newest - null null
+2026-07-15 21:03:20.861 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/categories - null null
+2026-07-15 21:03:20.865 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:03:20.868 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:03:20.869 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 21:03:20.870 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 21:03:20.875 +02:00 [INF] Route matched with {action = "GetActive", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.CategoriesController (CanvasArt.API).
+2026-07-15 21:03:20.879 +02:00 [INF] Route matched with {action = "List", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Paintings.PaintingQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-15 21:03:21.684 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[CanvasArt.API.Models.DTOs.Categories.CategoryDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 21:03:21.689 +02:00 [INF] Executed action CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API) in 811.9274ms
+2026-07-15 21:03:21.690 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 21:03:21.690 +02:00 [INF] HTTP GET /api/categories responded 200 in 822.4728 ms
+2026-07-15 21:03:21.691 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/categories - 200 null application/json; charset=utf-8 830.3326ms
+2026-07-15 21:03:22.200 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Paintings.PaintingListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 21:03:22.221 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API) in 1336.6382ms
+2026-07-15 21:03:22.223 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 21:03:22.224 +02:00 [INF] HTTP GET /api/paintings responded 200 in 1358.7536 ms
+2026-07-15 21:03:22.226 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/paintings?page=1&pageSize=12&sort=newest - 200 null application/json; charset=utf-8 1367.3255ms
+2026-07-15 21:03:32.511 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/content/slideshow - null null
+2026-07-15 21:03:32.517 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/categories/featured - null null
+2026-07-15 21:03:32.542 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:03:32.544 +02:00 [INF] HTTP GET /api/categories/featured responded 404 in 1.6759 ms
+2026-07-15 21:03:32.511 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/paintings/featured - null null
+2026-07-15 21:03:32.544 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/categories/featured - 404 0 null 27.6146ms
+2026-07-15 21:03:32.537 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:03:32.547 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:03:32.531 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/promotions/active - null null
+2026-07-15 21:03:32.541 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/frames - null null
+2026-07-15 21:03:32.546 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/customers/testimonials - null null
+2026-07-15 21:03:32.549 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/content/instagram - null null
+2026-07-15 21:03:32.555 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/api/categories/featured, Response status code: 404
+2026-07-15 21:03:32.556 +02:00 [INF] HTTP GET /api/content/slideshow responded 404 in 19.0926 ms
+2026-07-15 21:03:32.556 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.GetBySlug (CanvasArt.API)'
+2026-07-15 21:03:32.558 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:03:32.561 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:03:32.564 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:03:32.566 +02:00 [INF] CORS policy execution successful.
+2026-07-15 21:03:32.568 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/content/slideshow - 404 0 null 57.3916ms
+2026-07-15 21:03:32.570 +02:00 [INF] HTTP GET /api/promotions/active responded 404 in 11.9535 ms
+2026-07-15 21:03:32.571 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-15 21:03:32.571 +02:00 [INF] HTTP GET /api/customers/testimonials responded 404 in 7.9856 ms
+2026-07-15 21:03:32.572 +02:00 [INF] HTTP GET /api/content/instagram responded 404 in 6.2571 ms
+2026-07-15 21:03:32.573 +02:00 [INF] Route matched with {action = "GetBySlug", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBySlug(System.String, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-15 21:03:32.576 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/api/content/slideshow, Response status code: 404
+2026-07-15 21:03:32.577 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/promotions/active - 404 0 null 47.0216ms
+2026-07-15 21:03:32.579 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/customers/testimonials - 404 0 null 33.4379ms
+2026-07-15 21:03:32.588 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/api/promotions/active, Response status code: 404
+2026-07-15 21:03:32.581 +02:00 [INF] Route matched with {action = "List", controller = "Frames"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Frames.FrameQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.FramesController (CanvasArt.API).
+2026-07-15 21:03:32.593 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/api/customers/testimonials, Response status code: 404
+2026-07-15 21:03:32.580 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/content/instagram - 404 0 null 31.3834ms
+2026-07-15 21:03:32.602 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/api/content/instagram, Response status code: 404
+2026-07-15 21:03:32.714 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Frames.FrameListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 21:03:32.721 +02:00 [INF] Executed action CanvasArt.API.Controllers.FramesController.List (CanvasArt.API) in 122.6291ms
+2026-07-15 21:03:32.721 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-15 21:03:32.722 +02:00 [INF] HTTP GET /api/frames responded 200 in 160.8933 ms
+2026-07-15 21:03:32.724 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/frames - 200 null application/json; charset=utf-8 182.9158ms
+2026-07-15 21:03:32.783 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.GetBySlug (CanvasArt.API) in 201.2025ms
+2026-07-15 21:03:32.785 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.GetBySlug (CanvasArt.API)'
+2026-07-15 21:03:32.786 +02:00 [ERR] HTTP GET /api/paintings/featured responded 500 in 239.2341 ms
+CanvasArt.API.Models.Common.NotFoundException: Painting 'featured' was not found.
+   at CanvasArt.API.Services.PaintingService.GetBySlugAsync(String slug, Boolean incrementView, CancellationToken cancellationToken) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Services\PaintingService.cs:line 62
+   at CanvasArt.API.Controllers.PaintingsController.GetBySlug(String slug, CancellationToken ct) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Controllers\PaintingsController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-07-15 21:03:32.849 +02:00 [WRN] Handled application error: Painting 'featured' was not found.
+CanvasArt.API.Models.Common.NotFoundException: Painting 'featured' was not found.
+   at CanvasArt.API.Services.PaintingService.GetBySlugAsync(String slug, Boolean incrementView, CancellationToken cancellationToken) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Services\PaintingService.cs:line 62
+   at CanvasArt.API.Controllers.PaintingsController.GetBySlug(String slug, CancellationToken ct) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Controllers\PaintingsController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at CanvasArt.API.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in D:\CanvasArt project\WebApplication1\src\CanvasArt.API\Middleware\GlobalExceptionMiddleware.cs:line 29
+2026-07-15 21:03:32.863 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/paintings/featured - 404 null application/json 351.8059ms
+2026-07-15 23:56:46.302 +02:00 [INF] CanvasArt API starting up
+2026-07-15 23:56:46.326 +02:00 [DBG] Hosting starting
+2026-07-15 23:56:46.340 +02:00 [INF] User profile is available. Using 'C:\Users\joker\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-15 23:56:46.426 +02:00 [INF] Now listening on: https://localhost:7153
+2026-07-15 23:56:46.426 +02:00 [INF] Now listening on: http://localhost:5167
+2026-07-15 23:56:46.426 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-15 23:56:46.427 +02:00 [INF] Hosting environment: Development
+2026-07-15 23:56:46.427 +02:00 [INF] Content root path: D:\CanvasArt project\WebApplication1\src\CanvasArt.API
+2026-07-15 23:56:46.427 +02:00 [DBG] Hosting started
+2026-07-15 23:57:15.565 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7153/api/categories - null null
+2026-07-15 23:57:15.621 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:57:15.635 +02:00 [INF] Route matched with {action = "GetActive", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.CategoriesController (CanvasArt.API).
+2026-07-15 23:57:16.520 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[CanvasArt.API.Models.DTOs.Categories.CategoryDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 23:57:16.540 +02:00 [INF] Executed action CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API) in 903.208ms
+2026-07-15 23:57:16.542 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:57:16.543 +02:00 [INF] HTTP GET /api/categories responded 200 in 951.6336 ms
+2026-07-15 23:57:16.544 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7153/api/categories - 200 null application/json; charset=utf-8 980.3511ms
+2026-07-15 23:57:16.601 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7153/api/paintings?page=1&pageSize=5 - null null
+2026-07-15 23:57:16.604 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 23:57:16.608 +02:00 [INF] Route matched with {action = "List", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Paintings.PaintingQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-15 23:57:16.906 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Paintings.PaintingListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:57:16.914 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API) in 305.8378ms
+2026-07-15 23:57:16.915 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 23:57:16.915 +02:00 [INF] HTTP GET /api/paintings responded 200 in 312.0794 ms
+2026-07-15 23:57:16.915 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7153/api/paintings?page=1&pageSize=5 - 200 null application/json; charset=utf-8 313.4964ms
+2026-07-15 23:58:16.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/paintings?isFeatured=true&pageSize=8&sortBy=createdAt&sortDir=desc - null null
+2026-07-15 23:58:16.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/categories - null null
+2026-07-15 23:58:16.691 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/frames?page=1&pageSize=4&isActive=true - null null
+2026-07-15 23:58:16.691 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/slides - null null
+2026-07-15 23:58:16.692 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:16.692 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:16.692 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:16.692 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:16.694 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 23:58:16.694 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-15 23:58:16.694 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:16.694 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.SlidesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:16.694 +02:00 [INF] Route matched with {action = "GetActive", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.CategoriesController (CanvasArt.API).
+2026-07-15 23:58:16.694 +02:00 [INF] Route matched with {action = "List", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Paintings.PaintingQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-15 23:58:16.697 +02:00 [INF] Route matched with {action = "GetActive", controller = "Slides"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.SlidesController (CanvasArt.API).
+2026-07-15 23:58:16.698 +02:00 [INF] Route matched with {action = "List", controller = "Frames"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Frames.FrameQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.FramesController (CanvasArt.API).
+2026-07-15 23:58:16.736 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-07-15 23:58:16.848 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[CanvasArt.API.Models.DTOs.Categories.CategoryDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 23:58:16.850 +02:00 [INF] Executed action CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API) in 155.0852ms
+2026-07-15 23:58:16.850 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:16.850 +02:00 [INF] HTTP GET /api/categories responded 200 in 159.2536 ms
+2026-07-15 23:58:16.850 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/categories - 200 null application/json; charset=utf-8 160.1872ms
+2026-07-15 23:58:17.234 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Frames.FrameListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:58:17.240 +02:00 [INF] Executed action CanvasArt.API.Controllers.FramesController.List (CanvasArt.API) in 541.7227ms
+2026-07-15 23:58:17.240 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-15 23:58:17.240 +02:00 [INF] HTTP GET /api/frames responded 200 in 549.4302 ms
+2026-07-15 23:58:17.241 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/frames?page=1&pageSize=4&isActive=true - 200 null application/json; charset=utf-8 549.7979ms
+2026-07-15 23:58:17.423 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Paintings.PaintingListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:58:17.423 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API) in 728.8616ms
+2026-07-15 23:58:17.424 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 23:58:17.424 +02:00 [INF] HTTP GET /api/paintings responded 200 in 733.0773 ms
+2026-07-15 23:58:17.424 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/paintings?isFeatured=true&pageSize=8&sortBy=createdAt&sortDir=desc - 200 null application/json; charset=utf-8 733.4843ms
+2026-07-15 23:58:17.451 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - null null
+2026-07-15 23:58:17.452 +02:00 [INF] HTTP GET /media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg responded 404 in 0.6233 ms
+2026-07-15 23:58:17.453 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - 404 0 null 1.4194ms
+2026-07-15 23:58:17.453 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg, Response status code: 404
+2026-07-15 23:58:17.844 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[CanvasArt.API.Models.DTOs.Cms.SlideDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 23:58:17.847 +02:00 [INF] Executed action CanvasArt.API.Controllers.SlidesController.GetActive (CanvasArt.API) in 1149.7512ms
+2026-07-15 23:58:17.847 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.SlidesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:17.847 +02:00 [INF] HTTP GET /api/slides responded 200 in 1155.8648 ms
+2026-07-15 23:58:17.847 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/slides - 200 null application/json; charset=utf-8 1156.1565ms
+2026-07-15 23:58:20.363 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/categories - null null
+2026-07-15 23:58:20.363 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/paintings?page=1&pageSize=12&isPublished=true&sortBy=createdAt&sortDir=desc - null null
+2026-07-15 23:58:20.364 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:20.364 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:20.364 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:20.364 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 23:58:20.364 +02:00 [INF] Route matched with {action = "GetActive", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.CategoriesController (CanvasArt.API).
+2026-07-15 23:58:20.364 +02:00 [INF] Route matched with {action = "List", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Paintings.PaintingQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-15 23:58:20.599 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[CanvasArt.API.Models.DTOs.Categories.CategoryDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 23:58:20.600 +02:00 [INF] Executed action CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API) in 235.8119ms
+2026-07-15 23:58:20.600 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:20.600 +02:00 [INF] HTTP GET /api/categories responded 200 in 236.3007 ms
+2026-07-15 23:58:20.600 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/categories - 200 null application/json; charset=utf-8 236.6262ms
+2026-07-15 23:58:20.669 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Paintings.PaintingListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:58:20.669 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API) in 305.264ms
+2026-07-15 23:58:20.669 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 23:58:20.669 +02:00 [INF] HTTP GET /api/paintings responded 200 in 305.7332 ms
+2026-07-15 23:58:20.669 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/paintings?page=1&pageSize=12&isPublished=true&sortBy=createdAt&sortDir=desc - 200 null application/json; charset=utf-8 306.0362ms
+2026-07-15 23:58:20.688 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - null null
+2026-07-15 23:58:20.689 +02:00 [INF] HTTP GET /media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg responded 404 in 0.4936 ms
+2026-07-15 23:58:20.689 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - 404 0 null 0.7851ms
+2026-07-15 23:58:20.689 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg, Response status code: 404
+2026-07-15 23:58:23.097 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/paintings/sunset-over-the-vardar - null null
+2026-07-15 23:58:23.097 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:23.097 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.GetBySlug (CanvasArt.API)'
+2026-07-15 23:58:23.101 +02:00 [INF] Route matched with {action = "GetBySlug", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBySlug(System.String, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-15 23:58:23.574 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.DTOs.Paintings.PaintingDetailDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:58:23.578 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.GetBySlug (CanvasArt.API) in 477.8847ms
+2026-07-15 23:58:23.579 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.GetBySlug (CanvasArt.API)'
+2026-07-15 23:58:23.579 +02:00 [INF] HTTP GET /api/paintings/sunset-over-the-vardar responded 200 in 481.8179 ms
+2026-07-15 23:58:23.579 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/paintings/sunset-over-the-vardar - 200 null application/json; charset=utf-8 482.3561ms
+2026-07-15 23:58:23.598 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_wm.jpg - null null
+2026-07-15 23:58:23.599 +02:00 [INF] HTTP GET /media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_wm.jpg responded 404 in 0.2897 ms
+2026-07-15 23:58:23.599 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_wm.jpg - 404 0 null 0.6281ms
+2026-07-15 23:58:23.599 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_wm.jpg, Response status code: 404
+2026-07-15 23:58:38.225 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/paintings?isFeatured=true&pageSize=8&sortBy=createdAt&sortDir=desc - null null
+2026-07-15 23:58:38.225 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/slides - null null
+2026-07-15 23:58:38.225 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/categories - null null
+2026-07-15 23:58:38.225 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/frames?page=1&pageSize=4&isActive=true - null null
+2026-07-15 23:58:38.225 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:38.225 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:38.225 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:38.225 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:58:38.225 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 23:58:38.225 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-15 23:58:38.225 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.SlidesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:38.225 +02:00 [INF] Route matched with {action = "List", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Paintings.PaintingQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-15 23:58:38.225 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:38.225 +02:00 [INF] Route matched with {action = "List", controller = "Frames"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Frames.FrameQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.FramesController (CanvasArt.API).
+2026-07-15 23:58:38.225 +02:00 [INF] Route matched with {action = "GetActive", controller = "Slides"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.SlidesController (CanvasArt.API).
+2026-07-15 23:58:38.225 +02:00 [INF] Route matched with {action = "GetActive", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.CategoriesController (CanvasArt.API).
+2026-07-15 23:58:38.291 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[CanvasArt.API.Models.DTOs.Categories.CategoryDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 23:58:38.292 +02:00 [INF] Executed action CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API) in 66.2509ms
+2026-07-15 23:58:38.292 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:38.292 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Frames.FrameListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:58:38.292 +02:00 [INF] HTTP GET /api/categories responded 200 in 66.8083 ms
+2026-07-15 23:58:38.292 +02:00 [INF] Executed action CanvasArt.API.Controllers.FramesController.List (CanvasArt.API) in 66.7483ms
+2026-07-15 23:58:38.292 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/categories - 200 null application/json; charset=utf-8 67.1568ms
+2026-07-15 23:58:38.292 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-15 23:58:38.292 +02:00 [INF] HTTP GET /api/frames responded 200 in 67.1305 ms
+2026-07-15 23:58:38.292 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/frames?page=1&pageSize=4&isActive=true - 200 null application/json; charset=utf-8 67.421ms
+2026-07-15 23:58:38.356 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Paintings.PaintingListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:58:38.356 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API) in 130.9625ms
+2026-07-15 23:58:38.356 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.List (CanvasArt.API)'
+2026-07-15 23:58:38.356 +02:00 [INF] HTTP GET /api/paintings responded 200 in 131.3479 ms
+2026-07-15 23:58:38.356 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/paintings?isFeatured=true&pageSize=8&sortBy=createdAt&sortDir=desc - 200 null application/json; charset=utf-8 131.577ms
+2026-07-15 23:58:38.379 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - null null
+2026-07-15 23:58:38.380 +02:00 [INF] HTTP GET /media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg responded 404 in 0.3673 ms
+2026-07-15 23:58:38.380 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - 404 0 null 0.789ms
+2026-07-15 23:58:38.380 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg, Response status code: 404
+2026-07-15 23:58:38.554 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[CanvasArt.API.Models.DTOs.Cms.SlideDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 23:58:38.554 +02:00 [INF] Executed action CanvasArt.API.Controllers.SlidesController.GetActive (CanvasArt.API) in 328.9314ms
+2026-07-15 23:58:38.554 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.SlidesController.GetActive (CanvasArt.API)'
+2026-07-15 23:58:38.554 +02:00 [INF] HTTP GET /api/slides responded 200 in 329.3371 ms
+2026-07-15 23:58:38.554 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/slides - 200 null application/json; charset=utf-8 329.5733ms
+2026-07-15 23:59:46.699 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/auth/login - null null
+2026-07-15 23:59:46.699 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:46.700 +02:00 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.5874 ms
+2026-07-15 23:59:46.700 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/auth/login - 204 null null 0.8413ms
+2026-07-15 23:59:46.701 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7153/api/auth/login - application/json 61
+2026-07-15 23:59:46.702 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:46.702 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API)'
+2026-07-15 23:59:46.704 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(CanvasArt.API.Models.DTOs.Auth.LoginRequest, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.AuthController (CanvasArt.API).
+2026-07-15 23:59:47.283 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.DTOs.Auth.AuthResponse, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:59:47.286 +02:00 [INF] Executed action CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API) in 582.4089ms
+2026-07-15 23:59:47.286 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.AuthController.Login (CanvasArt.API)'
+2026-07-15 23:59:47.286 +02:00 [INF] HTTP POST /api/auth/login responded 200 in 584.5165 ms
+2026-07-15 23:59:47.287 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7153/api/auth/login - 200 null application/json; charset=utf-8 585.2048ms
+2026-07-15 23:59:47.374 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/orders/stats - null null
+2026-07-15 23:59:47.374 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/orders?page=1&pageSize=8&sortBy=createdAt&sortDir=desc - null null
+2026-07-15 23:59:47.375 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:47.375 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:47.375 +02:00 [INF] HTTP OPTIONS /api/orders/stats responded 204 in 0.1867 ms
+2026-07-15 23:59:47.375 +02:00 [INF] HTTP OPTIONS /api/orders responded 204 in 0.1946 ms
+2026-07-15 23:59:47.375 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/orders/stats - 204 null null 0.4724ms
+2026-07-15 23:59:47.375 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/orders?page=1&pageSize=8&sortBy=createdAt&sortDir=desc - 204 null null 0.3838ms
+2026-07-15 23:59:47.376 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/orders?page=1&pageSize=8&sortBy=createdAt&sortDir=desc - null null
+2026-07-15 23:59:47.376 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/orders/stats - null null
+2026-07-15 23:59:47.376 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:47.377 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:47.404 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.OrdersController.Stats (CanvasArt.API)'
+2026-07-15 23:59:47.404 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.OrdersController.Query (CanvasArt.API)'
+2026-07-15 23:59:47.406 +02:00 [INF] Route matched with {action = "Stats", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Stats(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.OrdersController (CanvasArt.API).
+2026-07-15 23:59:47.406 +02:00 [INF] Route matched with {action = "Query", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Query(CanvasArt.API.Models.DTOs.Orders.OrderQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.OrdersController (CanvasArt.API).
+2026-07-15 23:59:47.539 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Orders.OrderListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:59:47.539 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Repository.OrderStatsDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:59:47.548 +02:00 [INF] Executed action CanvasArt.API.Controllers.OrdersController.Stats (CanvasArt.API) in 142.4329ms
+2026-07-15 23:59:47.548 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.OrdersController.Stats (CanvasArt.API)'
+2026-07-15 23:59:47.548 +02:00 [INF] HTTP GET /api/orders/stats responded 200 in 171.3533 ms
+2026-07-15 23:59:47.548 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/orders/stats - 200 null application/json; charset=utf-8 172.3288ms
+2026-07-15 23:59:47.549 +02:00 [INF] Executed action CanvasArt.API.Controllers.OrdersController.Query (CanvasArt.API) in 142.7991ms
+2026-07-15 23:59:47.549 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.OrdersController.Query (CanvasArt.API)'
+2026-07-15 23:59:47.549 +02:00 [INF] HTTP GET /api/orders responded 200 in 173.0461 ms
+2026-07-15 23:59:47.549 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/orders?page=1&pageSize=8&sortBy=createdAt&sortDir=desc - 200 null application/json; charset=utf-8 173.1596ms
+2026-07-15 23:59:48.821 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/auth/me - null null
+2026-07-15 23:59:48.821 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/auth/me - null null
+2026-07-15 23:59:48.821 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:48.821 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:48.821 +02:00 [INF] HTTP OPTIONS /api/auth/me responded 204 in 0.1234 ms
+2026-07-15 23:59:48.821 +02:00 [INF] HTTP OPTIONS /api/auth/me responded 204 in 0.1232 ms
+2026-07-15 23:59:48.821 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/auth/me - 204 null null 0.3533ms
+2026-07-15 23:59:48.821 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/auth/me - 204 null null 0.353ms
+2026-07-15 23:59:48.824 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/auth/me - null null
+2026-07-15 23:59:48.824 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:48.825 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.AuthController.Me (CanvasArt.API)'
+2026-07-15 23:59:48.827 +02:00 [INF] Route matched with {action = "Me", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Me(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.AuthController (CanvasArt.API).
+2026-07-15 23:59:48.970 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.DTOs.Auth.UserDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:59:48.972 +02:00 [INF] Executed action CanvasArt.API.Controllers.AuthController.Me (CanvasArt.API) in 144.6562ms
+2026-07-15 23:59:48.972 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.AuthController.Me (CanvasArt.API)'
+2026-07-15 23:59:48.972 +02:00 [INF] HTTP GET /api/auth/me responded 200 in 148.0238 ms
+2026-07-15 23:59:48.972 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/auth/me - 200 null application/json; charset=utf-8 148.4211ms
+2026-07-15 23:59:48.974 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/auth/me - null null
+2026-07-15 23:59:48.974 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:48.975 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.AuthController.Me (CanvasArt.API)'
+2026-07-15 23:59:48.975 +02:00 [INF] Route matched with {action = "Me", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Me(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.AuthController (CanvasArt.API).
+2026-07-15 23:59:49.071 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.DTOs.Auth.UserDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:59:49.072 +02:00 [INF] Executed action CanvasArt.API.Controllers.AuthController.Me (CanvasArt.API) in 96.414ms
+2026-07-15 23:59:49.072 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.AuthController.Me (CanvasArt.API)'
+2026-07-15 23:59:49.072 +02:00 [INF] HTTP GET /api/auth/me responded 200 in 97.8263 ms
+2026-07-15 23:59:49.072 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/auth/me - 200 null application/json; charset=utf-8 98.154ms
+2026-07-15 23:59:49.127 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/paintings/manage?page=1&pageSize=10 - null null
+2026-07-15 23:59:49.127 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/tags - null null
+2026-07-15 23:59:49.127 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/categories - null null
+2026-07-15 23:59:49.127 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:49.127 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:49.127 +02:00 [INF] HTTP OPTIONS /api/paintings/manage responded 204 in 0.1700 ms
+2026-07-15 23:59:49.127 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:49.127 +02:00 [INF] HTTP OPTIONS /api/tags responded 204 in 0.1744 ms
+2026-07-15 23:59:49.127 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/paintings/manage?page=1&pageSize=10 - 204 null null 0.4375ms
+2026-07-15 23:59:49.127 +02:00 [INF] HTTP OPTIONS /api/categories responded 204 in 0.1503 ms
+2026-07-15 23:59:49.127 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/tags - 204 null null 0.3306ms
+2026-07-15 23:59:49.127 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/categories - 204 null null 0.4063ms
+2026-07-15 23:59:49.127 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/frames?page=1&pageSize=100 - null null
+2026-07-15 23:59:49.127 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:49.128 +02:00 [INF] HTTP OPTIONS /api/frames responded 204 in 0.1134 ms
+2026-07-15 23:59:49.128 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/frames?page=1&pageSize=100 - 204 null null 0.3968ms
+2026-07-15 23:59:49.129 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/tags - null null
+2026-07-15 23:59:49.129 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/frames?page=1&pageSize=100 - null null
+2026-07-15 23:59:49.129 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/paintings/manage?page=1&pageSize=10 - null null
+2026-07-15 23:59:49.129 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/categories - null null
+2026-07-15 23:59:49.129 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:49.129 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:49.129 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:49.129 +02:00 [INF] CORS policy execution successful.
+2026-07-15 23:59:49.130 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-15 23:59:49.130 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.TagsController.GetAll (CanvasArt.API)'
+2026-07-15 23:59:49.130 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:59:49.130 +02:00 [INF] Route matched with {action = "List", controller = "Frames"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] List(CanvasArt.API.Models.DTOs.Frames.FrameQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.FramesController (CanvasArt.API).
+2026-07-15 23:59:49.130 +02:00 [INF] Route matched with {action = "GetActive", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetActive(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.CategoriesController (CanvasArt.API).
+2026-07-15 23:59:49.130 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.Query (CanvasArt.API)'
+2026-07-15 23:59:49.131 +02:00 [INF] Route matched with {action = "GetAll", controller = "Tags"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.TagsController (CanvasArt.API).
+2026-07-15 23:59:49.131 +02:00 [INF] Route matched with {action = "Query", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Query(CanvasArt.API.Models.DTOs.Paintings.PaintingQuery, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-15 23:59:49.272 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[CanvasArt.API.Models.DTOs.Categories.CategoryDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 23:59:49.272 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Frames.FrameListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:59:49.272 +02:00 [INF] Executed action CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API) in 142.4774ms
+2026-07-15 23:59:49.272 +02:00 [INF] Executed action CanvasArt.API.Controllers.FramesController.List (CanvasArt.API) in 142.5454ms
+2026-07-15 23:59:49.272 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.CategoriesController.GetActive (CanvasArt.API)'
+2026-07-15 23:59:49.272 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.FramesController.List (CanvasArt.API)'
+2026-07-15 23:59:49.272 +02:00 [INF] HTTP GET /api/categories responded 200 in 143.1092 ms
+2026-07-15 23:59:49.272 +02:00 [INF] HTTP GET /api/frames responded 200 in 143.2010 ms
+2026-07-15 23:59:49.273 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/categories - 200 null application/json; charset=utf-8 143.3577ms
+2026-07-15 23:59:49.273 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/frames?page=1&pageSize=100 - 200 null application/json; charset=utf-8 143.3974ms
+2026-07-15 23:59:49.278 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[CanvasArt.API.Models.DTOs.Tags.TagDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-07-15 23:59:49.279 +02:00 [INF] Executed action CanvasArt.API.Controllers.TagsController.GetAll (CanvasArt.API) in 147.942ms
+2026-07-15 23:59:49.280 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.TagsController.GetAll (CanvasArt.API)'
+2026-07-15 23:59:49.280 +02:00 [INF] HTTP GET /api/tags responded 200 in 150.4224 ms
+2026-07-15 23:59:49.280 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/tags - 200 null application/json; charset=utf-8 150.6011ms
+2026-07-15 23:59:49.338 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.Common.PagedResult`1[[CanvasArt.API.Models.DTOs.Paintings.PaintingListItemDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-15 23:59:49.339 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.Query (CanvasArt.API) in 207.0055ms
+2026-07-15 23:59:49.339 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.Query (CanvasArt.API)'
+2026-07-15 23:59:49.339 +02:00 [INF] HTTP GET /api/paintings/manage responded 200 in 209.3201 ms
+2026-07-15 23:59:49.339 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/paintings/manage?page=1&pageSize=10 - 200 null application/json; charset=utf-8 209.6238ms

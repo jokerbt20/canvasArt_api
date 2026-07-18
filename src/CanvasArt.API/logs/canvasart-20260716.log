@@ -1,0 +1,52 @@
+2026-07-16 00:00:15.122 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/api/paintings/sunset-over-the-vardar - null null
+2026-07-16 00:00:15.124 +02:00 [INF] CORS policy execution successful.
+2026-07-16 00:00:15.125 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.PaintingsController.GetBySlug (CanvasArt.API)'
+2026-07-16 00:00:15.125 +02:00 [INF] Route matched with {action = "GetBySlug", controller = "Paintings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBySlug(System.String, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.PaintingsController (CanvasArt.API).
+2026-07-16 00:00:15.493 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.DTOs.Paintings.PaintingDetailDto, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-16 00:00:15.493 +02:00 [INF] Executed action CanvasArt.API.Controllers.PaintingsController.GetBySlug (CanvasArt.API) in 368.5108ms
+2026-07-16 00:00:15.494 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.PaintingsController.GetBySlug (CanvasArt.API)'
+2026-07-16 00:00:15.494 +02:00 [INF] HTTP GET /api/paintings/sunset-over-the-vardar responded 200 in 369.2448 ms
+2026-07-16 00:00:15.494 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/api/paintings/sunset-over-the-vardar - 200 null application/json; charset=utf-8 372.2268ms
+2026-07-16 00:00:15.528 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_wm.jpg - null null
+2026-07-16 00:00:15.528 +02:00 [INF] HTTP GET /media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_wm.jpg responded 404 in 0.2238 ms
+2026-07-16 00:00:15.528 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_wm.jpg - 404 0 null 0.4512ms
+2026-07-16 00:00:15.528 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_wm.jpg, Response status code: 404
+2026-07-16 00:00:17.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - null null
+2026-07-16 00:00:17.324 +02:00 [INF] HTTP GET /media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg responded 404 in 0.3414 ms
+2026-07-16 00:00:17.324 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - 404 0 null 0.6635ms
+2026-07-16 00:00:17.324 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg, Response status code: 404
+2026-07-16 00:00:17.557 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - null null
+2026-07-16 00:00:17.558 +02:00 [INF] HTTP GET /media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg responded 404 in 0.3819 ms
+2026-07-16 00:00:17.558 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg - 404 0 null 0.6877ms
+2026-07-16 00:00:17.558 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7153/media/paintings/1/20260715172137-53ee8e996a30441b80c18d338_thumb.jpg, Response status code: 404
+2026-07-16 00:00:17.570 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7153/api/cart/calculate - null null
+2026-07-16 00:00:17.571 +02:00 [INF] CORS policy execution successful.
+2026-07-16 00:00:17.571 +02:00 [INF] HTTP OPTIONS /api/cart/calculate responded 204 in 0.3162 ms
+2026-07-16 00:00:17.571 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7153/api/cart/calculate - 204 null null 0.6225ms
+2026-07-16 00:00:17.572 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7153/api/cart/calculate - application/json 94
+2026-07-16 00:00:17.572 +02:00 [INF] CORS policy execution successful.
+2026-07-16 00:00:17.572 +02:00 [INF] Executing endpoint 'CanvasArt.API.Controllers.CartController.Calculate (CanvasArt.API)'
+2026-07-16 00:00:17.575 +02:00 [INF] Route matched with {action = "Calculate", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Calculate(CanvasArt.API.Models.DTOs.Cart.CartRequest, System.Threading.CancellationToken) on controller CanvasArt.API.Controllers.CartController (CanvasArt.API).
+2026-07-16 00:00:17.874 +02:00 [INF] Executing OkObjectResult, writing value of type 'CanvasArt.API.Models.Common.ApiResponse`1[[CanvasArt.API.Models.DTOs.Cart.CartResponse, CanvasArt.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-16 00:00:17.876 +02:00 [INF] Executed action CanvasArt.API.Controllers.CartController.Calculate (CanvasArt.API) in 300.3763ms
+2026-07-16 00:00:17.876 +02:00 [INF] Executed endpoint 'CanvasArt.API.Controllers.CartController.Calculate (CanvasArt.API)'
+2026-07-16 00:00:17.876 +02:00 [INF] HTTP POST /api/cart/calculate responded 200 in 303.8989 ms
+2026-07-16 00:00:17.876 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7153/api/cart/calculate - 200 null application/json; charset=utf-8 304.0062ms
+2026-07-16 07:34:58.740 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/index.html - null null
+2026-07-16 07:34:58.780 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 38.7667 ms
+2026-07-16 07:34:58.780 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/index.html - 200 null text/html;charset=utf-8 39.7155ms
+2026-07-16 07:34:59.384 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - null null
+2026-07-16 07:34:59.499 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 115.4179 ms
+2026-07-16 07:34:59.500 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 115.7369ms
+2026-07-16 07:35:10.292 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/index.html - null null
+2026-07-16 07:35:10.293 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.2283 ms
+2026-07-16 07:35:10.293 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/index.html - 200 null text/html;charset=utf-8 1.7157ms
+2026-07-16 07:35:10.381 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - null null
+2026-07-16 07:35:10.406 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 23.8738 ms
+2026-07-16 07:35:10.406 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.9187ms
+2026-07-16 07:35:12.545 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/index.html - null null
+2026-07-16 07:35:12.545 +02:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.3740 ms
+2026-07-16 07:35:12.545 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/index.html - 200 null text/html;charset=utf-8 0.6308ms
+2026-07-16 07:35:12.619 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - null null
+2026-07-16 07:35:12.638 +02:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 18.4406 ms
+2026-07-16 07:35:12.638 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7153/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.7637ms
