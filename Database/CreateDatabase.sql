@@ -177,7 +177,6 @@ BEGIN
         WidthCm      DECIMAL(9,2)   NOT NULL,
         HeightCm     DECIMAL(9,2)   NOT NULL,
         Price        DECIMAL(18,2)  NOT NULL,
-        Stock        INT            NOT NULL CONSTRAINT DF_PaintingSizes_Stock DEFAULT (0),
         Sku          NVARCHAR(64)   NULL,
         IsDefault    BIT            NOT NULL CONSTRAINT DF_PaintingSizes_IsDefault DEFAULT (0),
         DisplayOrder INT            NOT NULL CONSTRAINT DF_PaintingSizes_DisplayOrder DEFAULT (0),
@@ -185,7 +184,6 @@ BEGIN
         CONSTRAINT PK_PaintingSizes PRIMARY KEY CLUSTERED (Id),
         CONSTRAINT FK_PaintingSizes_Paintings FOREIGN KEY (PaintingId) REFERENCES dbo.Paintings (Id) ON DELETE CASCADE,
         CONSTRAINT CK_PaintingSizes_Price CHECK (Price >= 0),
-        CONSTRAINT CK_PaintingSizes_Stock CHECK (Stock >= 0),
         CONSTRAINT CK_PaintingSizes_Dimensions CHECK (WidthCm > 0 AND HeightCm > 0)
     );
     CREATE INDEX IX_PaintingSizes_PaintingId ON dbo.PaintingSizes (PaintingId);
@@ -247,41 +245,14 @@ BEGIN
         ImagePath     NVARCHAR(400)  NULL,
         ThumbnailPath NVARCHAR(400)  NULL,
         BasePrice     DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Frames_BasePrice DEFAULT (0),
-        Stock         INT            NOT NULL CONSTRAINT DF_Frames_Stock DEFAULT (0),
         IsActive      BIT            NOT NULL CONSTRAINT DF_Frames_IsActive DEFAULT (1),
         CreatedAt     DATETIME2(3)   NOT NULL CONSTRAINT DF_Frames_CreatedAt DEFAULT (SYSUTCDATETIME()),
         UpdatedAt     DATETIME2(3)   NOT NULL CONSTRAINT DF_Frames_UpdatedAt DEFAULT (SYSUTCDATETIME()),
         CONSTRAINT PK_Frames PRIMARY KEY CLUSTERED (Id),
         CONSTRAINT UQ_Frames_Code UNIQUE (Code),
-        CONSTRAINT CK_Frames_BasePrice CHECK (BasePrice >= 0),
-        CONSTRAINT CK_Frames_Stock CHECK (Stock >= 0)
+        CONSTRAINT CK_Frames_BasePrice CHECK (BasePrice >= 0)
     );
     CREATE INDEX IX_Frames_IsActive ON dbo.Frames (IsActive);
-END
-GO
-
-/* ---------------------------- FrameSizes --------------------------------- */
-IF OBJECT_ID(N'dbo.FrameSizes', N'U') IS NULL
-BEGIN
-    CREATE TABLE dbo.FrameSizes
-    (
-        Id           INT            IDENTITY(1,1) NOT NULL,
-        FrameId      INT            NOT NULL,
-        Label        NVARCHAR(50)   NOT NULL,
-        WidthCm      DECIMAL(9,2)   NOT NULL,
-        HeightCm     DECIMAL(9,2)   NOT NULL,
-        Price        DECIMAL(18,2)  NOT NULL,
-        Stock        INT            NOT NULL CONSTRAINT DF_FrameSizes_Stock DEFAULT (0),
-        Sku          NVARCHAR(64)   NULL,
-        DisplayOrder INT            NOT NULL CONSTRAINT DF_FrameSizes_DisplayOrder DEFAULT (0),
-        IsActive     BIT            NOT NULL CONSTRAINT DF_FrameSizes_IsActive DEFAULT (1),
-        CONSTRAINT PK_FrameSizes PRIMARY KEY CLUSTERED (Id),
-        CONSTRAINT FK_FrameSizes_Frames FOREIGN KEY (FrameId) REFERENCES dbo.Frames (Id) ON DELETE CASCADE,
-        CONSTRAINT CK_FrameSizes_Price CHECK (Price >= 0),
-        CONSTRAINT CK_FrameSizes_Stock CHECK (Stock >= 0),
-        CONSTRAINT CK_FrameSizes_Dimensions CHECK (WidthCm > 0 AND HeightCm > 0)
-    );
-    CREATE INDEX IX_FrameSizes_FrameId ON dbo.FrameSizes (FrameId);
 END
 GO
 
@@ -453,12 +424,10 @@ BEGIN
         PaintingId                    INT            NOT NULL,
         PaintingSizeId                INT            NOT NULL,
         FrameId                       INT            NULL,
-        FrameSizeId                   INT            NULL,
         PaintingCode                  NVARCHAR(50)   NOT NULL,
         PaintingName                  NVARCHAR(200)  NOT NULL,
         SizeLabel                     NVARCHAR(50)   NOT NULL,
         FrameName                     NVARCHAR(150)  NULL,
-        FrameSizeLabel                NVARCHAR(50)   NULL,
         ThumbnailPath                 NVARCHAR(400)  NULL,
         UnitPrice                     DECIMAL(18,2)  NOT NULL,
         FramePrice                    DECIMAL(18,2)  NOT NULL CONSTRAINT DF_OrderItems_FramePrice DEFAULT (0),

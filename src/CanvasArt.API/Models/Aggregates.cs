@@ -10,11 +10,6 @@ public sealed record PaintingAggregate(
     IReadOnlyList<Tag> Tags,
     IReadOnlyList<Frame> CompatibleFrames);
 
-/// <summary>A frame plus its sizes.</summary>
-public sealed record FrameAggregate(
-    Frame Frame,
-    IReadOnlyList<FrameSize> Sizes);
-
 /// <summary>An order plus its line items and status history.</summary>
 public sealed record OrderAggregate(
     Order Order,

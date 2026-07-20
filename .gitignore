@@ -1,10 +1,62 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+# .gitignore for the CanvasArt ASP.NET Core solution
 ################################################################################
 
-/.vs/CanvasArt/copilot-chat/1f189790/sessions
-/.vs/CanvasArt/CopilotIndices/18.8.1083.22234
-/.vs/CanvasArt/DesignTimeBuild
-/.vs/CanvasArt/FileContentIndex
-/.vs/CanvasArt.slnx/copilot-chat/1f189790/sessions
-/.vs/CopilotSnapshots
+## Build output
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Dd]ebug/
+[Rr]elease/
+[Ll]og/
+[Ll]ogs/
+publish/
+*.publish.xml
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*_i.c
+*_p.c
+
+## Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.rsuser
+*.userprefs
+
+## Runtime logs & generated media (should never be committed)
+src/CanvasArt.API/logs/
+src/CanvasArt.API/uploads/
+src/CanvasArt.API/storage/
+uploads/
+storage/
+
+## Local secrets & environment overrides
+appsettings.*.local.json
+secrets.json
+*.pfx
+*.key
+
+## NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Test / coverage
+[Tt]est[Rr]esult*/
+coverage*.json
+coverage*.xml
+coverage*.info
+
+## OS files
+.DS_Store
+Thumbs.db
+desktop.ini

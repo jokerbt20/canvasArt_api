@@ -36,9 +36,9 @@ public sealed class FrameService : IFrameService
 
     public async Task<FrameDetailDto> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
-        var aggregate = await _frames.GetAggregateByIdAsync(id, cancellationToken)
-                        ?? throw new NotFoundException("Frame", id);
-        return await BuildDetailAsync(aggregate, cancellationToken);
+        var frame = await _frames.GetByIdAsync(id, cancellationToken)
+                    ?? throw new NotFoundException("Frame", id);
+        return await BuildDetailAsync(frame, cancellationToken);
     }
 
     public async Task<FrameDetailDto> CreateAsync(CreateFrameRequest request, CancellationToken cancellationToken = default)
@@ -53,13 +53,11 @@ public sealed class FrameService : IFrameService
             Color = request.Color.Trim(),
             Description = request.Description?.Trim(),
             BasePrice = request.BasePrice,
-            Stock = request.Stock,
             IsActive = request.IsActive,
             CreatedAt = now,
             UpdatedAt = now
         };
-        var sizes = MapSizes(request.Sizes);
-        frame.Id = await _frames.CreateAsync(frame, sizes, cancellationToken);
+        frame.Id = await _frames.CreateAsync(frame, cancellationToken);
         return await GetByIdAsync(frame.Id, cancellationToken);
     }
 
@@ -73,12 +71,10 @@ public sealed class FrameService : IFrameService
         existing.Color = request.Color.Trim();
         existing.Description = request.Description?.Trim();
         existing.BasePrice = request.BasePrice;
-        existing.Stock = request.Stock;
         existing.IsActive = request.IsActive;
         existing.UpdatedAt = _clock.UtcNow;
 
-        var sizes = MapSizes(request.Sizes);
-        await _frames.UpdateAsync(existing, sizes, cancellationToken);
+        await _frames.UpdateAsync(existing, cancellationToken);
         return await GetByIdAsync(id, cancellationToken);
     }
 
@@ -95,7 +91,10 @@ public sealed class FrameService : IFrameService
         var frame = await _frames.GetByIdAsync(frameId, cancellationToken)
                     ?? throw new NotFoundException("Frame", frameId);
 
-        var set = await _images.ProcessSimpleImageAsync(content, fileName, _images.FramesFolder, _images.FramesFolder, cancellationToken);
+        // Saved with alpha preserved (PNG) rather than re-encoded as JPEG: this is the same
+        // image FrameCompositor uses to build room previews, and it needs a transparent
+        // background to detect the moulding via its alpha channel.
+        var set = await _images.ProcessSimpleImageAsync(content, fileName, _images.FramesFolder, _images.FramesFolder, cancellationToken, preserveAlpha: true);
 
         // Remove previous files, then persist the new paths.
         _images.DeleteFiles(frame.ImagePath, frame.ThumbnailPath);
@@ -104,30 +103,9 @@ public sealed class FrameService : IFrameService
         return await GetByIdAsync(frameId, cancellationToken);
     }
 
-    private async Task<FrameDetailDto> BuildDetailAsync(FrameAggregate a, CancellationToken ct)
+    private async Task<FrameDetailDto> BuildDetailAsync(Frame f, CancellationToken ct)
     {
-        var f = a.Frame;
-        var baseBreakdown = await _pricing.ForFrameAsync(f.BasePrice, f.Id, ct);
-
-        var sizes = new List<FrameSizeDto>(a.Sizes.Count);
-        foreach (var s in a.Sizes)
-        {
-            var b = await _pricing.ForFrameAsync(s.Price, f.Id, ct);
-            sizes.Add(new FrameSizeDto
-            {
-                Id = s.Id,
-                Label = s.Label,
-                WidthCm = s.WidthCm,
-                HeightCm = s.HeightCm,
-                Price = s.Price,
-                FinalPrice = b.FinalPrice,
-                DiscountAmount = b.DiscountAmount,
-                Stock = s.Stock,
-                Sku = s.Sku,
-                DisplayOrder = s.DisplayOrder,
-                IsActive = s.IsActive
-            });
-        }
+        var b = await _pricing.ForFrameAsync(f.BasePrice, f.Id, ct);
 
         return new FrameDetailDto
         {
@@ -140,12 +118,10 @@ public sealed class FrameService : IFrameService
             ImagePath = _images.BuildFrameUrl(f.ImagePath),
             ThumbnailPath = _images.BuildFrameUrl(f.ThumbnailPath),
             BasePrice = f.BasePrice,
-            FinalPrice = baseBreakdown.FinalPrice,
-            DiscountAmount = baseBreakdown.DiscountAmount,
-            Stock = f.Stock,
+            FinalPrice = b.FinalPrice,
+            DiscountAmount = b.DiscountAmount,
             IsActive = f.IsActive,
-            CreatedAt = f.CreatedAt,
-            Sizes = sizes
+            CreatedAt = f.CreatedAt
         };
     }
 
@@ -167,18 +143,4 @@ public sealed class FrameService : IFrameService
         }
         throw new ConflictException("Unable to generate a unique frame code.");
     }
-
-    private static List<FrameSize> MapSizes(IReadOnlyList<FrameSizeInput> inputs) =>
-        inputs.Select(s => new FrameSize
-        {
-            Id = s.Id ?? 0,
-            Label = s.Label.Trim(),
-            WidthCm = s.WidthCm,
-            HeightCm = s.HeightCm,
-            Price = s.Price,
-            Stock = s.Stock,
-            Sku = s.Sku?.Trim(),
-            DisplayOrder = s.DisplayOrder,
-            IsActive = s.IsActive
-        }).ToList();
 }

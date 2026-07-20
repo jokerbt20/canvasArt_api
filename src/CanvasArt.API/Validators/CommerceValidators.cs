@@ -63,9 +63,6 @@ public sealed class CartLineRequestValidator : AbstractValidator<CartLineRequest
         RuleFor(x => x.PaintingId).GreaterThan(0);
         RuleFor(x => x.PaintingSizeId).GreaterThan(0);
         RuleFor(x => x.Quantity).InclusiveBetween(1, 999);
-        RuleFor(x => x.FrameSizeId).NotNull()
-            .When(x => x.FrameId is not null)
-            .WithMessage("A frame size is required when a frame is selected.");
     }
 }
 

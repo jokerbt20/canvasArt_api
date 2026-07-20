@@ -54,7 +54,6 @@ public sealed class PaintingSizeInputValidator : AbstractValidator<PaintingSizeI
         RuleFor(x => x.WidthCm).GreaterThan(0);
         RuleFor(x => x.HeightCm).GreaterThan(0);
         RuleFor(x => x.Price).GreaterThanOrEqualTo(0);
-        RuleFor(x => x.Stock).GreaterThanOrEqualTo(0);
         RuleFor(x => x.Sku).MaximumLength(64);
     }
 }
@@ -94,18 +93,6 @@ public sealed class UpdatePaintingRequestValidator : AbstractValidator<UpdatePai
     }
 }
 
-public sealed class FrameSizeInputValidator : AbstractValidator<FrameSizeInput>
-{
-    public FrameSizeInputValidator()
-    {
-        RuleFor(x => x.Label).NotEmpty().MaximumLength(50);
-        RuleFor(x => x.WidthCm).GreaterThan(0);
-        RuleFor(x => x.HeightCm).GreaterThan(0);
-        RuleFor(x => x.Price).GreaterThanOrEqualTo(0);
-        RuleFor(x => x.Stock).GreaterThanOrEqualTo(0);
-    }
-}
-
 public sealed class CreateFrameRequestValidator : AbstractValidator<CreateFrameRequest>
 {
     public CreateFrameRequestValidator()
@@ -115,8 +102,6 @@ public sealed class CreateFrameRequestValidator : AbstractValidator<CreateFrameR
         RuleFor(x => x.Color).NotEmpty().MaximumLength(60);
         RuleFor(x => x.Code).MaximumLength(50);
         RuleFor(x => x.BasePrice).GreaterThanOrEqualTo(0);
-        RuleFor(x => x.Stock).GreaterThanOrEqualTo(0);
-        RuleForEach(x => x.Sizes).SetValidator(new FrameSizeInputValidator());
     }
 }
 
@@ -128,7 +113,5 @@ public sealed class UpdateFrameRequestValidator : AbstractValidator<UpdateFrameR
         RuleFor(x => x.Material).NotEmpty().MaximumLength(80);
         RuleFor(x => x.Color).NotEmpty().MaximumLength(60);
         RuleFor(x => x.BasePrice).GreaterThanOrEqualTo(0);
-        RuleFor(x => x.Stock).GreaterThanOrEqualTo(0);
-        RuleForEach(x => x.Sizes).SetValidator(new FrameSizeInputValidator());
     }
 }

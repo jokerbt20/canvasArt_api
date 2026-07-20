@@ -74,8 +74,8 @@ public sealed class OrderRepository : RepositoryBase, IOrderRepository
         var sql = $"""
             SELECT {OrderColumns} FROM dbo.Orders o WHERE {whereClause};
 
-            SELECT oi.Id, oi.OrderId, oi.PaintingId, oi.PaintingSizeId, oi.FrameId, oi.FrameSizeId,
-                   oi.PaintingCode, oi.PaintingName, oi.SizeLabel, oi.FrameName, oi.FrameSizeLabel, oi.ThumbnailPath,
+            SELECT oi.Id, oi.OrderId, oi.PaintingId, oi.PaintingSizeId, oi.FrameId,
+                   oi.PaintingCode, oi.PaintingName, oi.SizeLabel, oi.FrameName, oi.ThumbnailPath,
                    oi.UnitPrice, oi.FramePrice, oi.DiscountAmount, oi.Quantity, oi.LineTotal, oi.AppliedPromotionId, oi.AppliedCombinationPromotionId
             FROM dbo.OrderItems oi
             INNER JOIN dbo.Orders o ON o.Id = oi.OrderId
@@ -127,27 +127,11 @@ public sealed class OrderRepository : RepositoryBase, IOrderRepository
 
             foreach (var item in items)
             {
-                // Atomically decrement stock; a zero row-count means insufficient stock.
-                var paintingRows = await conn.ExecuteAsync(Command(
-                    "UPDATE dbo.PaintingSizes SET Stock = Stock - @Qty WHERE Id = @SizeId AND Stock >= @Qty;",
-                    new { Qty = item.Quantity, SizeId = item.PaintingSizeId }, cancellationToken, tx));
-                if (paintingRows == 0)
-                    throw new ConflictException($"'{item.PaintingName}' ({item.SizeLabel}) is out of stock.");
-
-                if (item.FrameSizeId is int frameSizeId)
-                {
-                    var frameRows = await conn.ExecuteAsync(Command(
-                        "UPDATE dbo.FrameSizes SET Stock = Stock - @Qty WHERE Id = @SizeId AND Stock >= @Qty;",
-                        new { Qty = item.Quantity, SizeId = frameSizeId }, cancellationToken, tx));
-                    if (frameRows == 0)
-                        throw new ConflictException($"Frame '{item.FrameName}' ({item.FrameSizeLabel}) is out of stock.");
-                }
-
                 const string itemSql = """
                     INSERT INTO dbo.OrderItems
-                        (OrderId, PaintingId, PaintingSizeId, FrameId, FrameSizeId, PaintingCode, PaintingName, SizeLabel, FrameName, FrameSizeLabel, ThumbnailPath, UnitPrice, FramePrice, DiscountAmount, Quantity, LineTotal, AppliedPromotionId, AppliedCombinationPromotionId)
+                        (OrderId, PaintingId, PaintingSizeId, FrameId, PaintingCode, PaintingName, SizeLabel, FrameName, ThumbnailPath, UnitPrice, FramePrice, DiscountAmount, Quantity, LineTotal, AppliedPromotionId, AppliedCombinationPromotionId)
                     VALUES
-                        (@OrderId, @PaintingId, @PaintingSizeId, @FrameId, @FrameSizeId, @PaintingCode, @PaintingName, @SizeLabel, @FrameName, @FrameSizeLabel, @ThumbnailPath, @UnitPrice, @FramePrice, @DiscountAmount, @Quantity, @LineTotal, @AppliedPromotionId, @AppliedCombinationPromotionId);
+                        (@OrderId, @PaintingId, @PaintingSizeId, @FrameId, @PaintingCode, @PaintingName, @SizeLabel, @FrameName, @ThumbnailPath, @UnitPrice, @FramePrice, @DiscountAmount, @Quantity, @LineTotal, @AppliedPromotionId, @AppliedCombinationPromotionId);
                     """;
                 item.OrderId = orderId;
                 await conn.ExecuteAsync(Command(itemSql, item, cancellationToken, tx));

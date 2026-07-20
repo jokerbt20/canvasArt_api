@@ -11,7 +11,6 @@ public class Frame
     public string? ImagePath { get; set; }
     public string? ThumbnailPath { get; set; }
     public decimal BasePrice { get; set; }
-    public int Stock { get; set; }
     public bool IsActive { get; set; } = true;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }

@@ -1,3 +1,6 @@
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+
 namespace CanvasArt.API.Services.Interfaces;
 
 /// <summary>The full set of variants produced from an uploaded painting image.</summary>
@@ -36,6 +39,9 @@ public interface IImageService
     /// <summary>Configured folder name for customer testimonial photos/thumbnails.</summary>
     string CustomersFolder { get; }
 
+    /// <summary>Configured folder name for server-generated framed-painting preview composites.</summary>
+    string FramePreviewsFolder { get; }
+
     /// <summary>
     /// Validates the upload, stores the original privately, and generates resized,
     /// thumbnail and watermarked variants under the given sub-folder.
@@ -48,8 +54,23 @@ public interface IImageService
     /// public sub-folders. Shared by slides, categories and frames so upload logic is never
     /// duplicated — callers only choose which folder pair the variants land in.
     /// </summary>
+    /// <param name="preserveAlpha">
+    /// When true, saves both variants as PNG with the alpha channel intact instead of
+    /// re-encoding as JPEG. Used for frame images, which double as the source
+    /// <c>FrameCompositor</c> composites room previews from — that requires a transparent
+    /// background to detect the moulding via its alpha channel.
+    /// </param>
     Task<SimpleImageSet> ProcessSimpleImageAsync(
-        Stream content, string originalFileName, string imageFolder, string thumbFolder, CancellationToken cancellationToken = default);
+        Stream content, string originalFileName, string imageFolder, string thumbFolder, CancellationToken cancellationToken = default, bool preserveAlpha = false);
+
+    /// <summary>
+    /// Saves a server-generated image (e.g. a frame-preview composite) as PNG under the given
+    /// public sub-folder, bypassing upload validation since the caller already produced it.
+    /// </summary>
+    Task SaveGeneratedPngAsync(Image<Rgba32> image, string folder, string fileName, CancellationToken cancellationToken = default);
+
+    /// <summary>True if a previously-generated public file already exists (used for cache checks).</summary>
+    bool PublicFileExists(string folder, string fileName);
 
     /// <summary>Deletes the given stored filenames/relative paths if they exist. Never throws.</summary>
     void DeleteFiles(params string?[] relativePaths);
@@ -68,4 +89,7 @@ public interface IImageService
 
     /// <summary>Builds the public URL for a filename stored under the customers folder, or null if empty.</summary>
     string? BuildCustomerUrl(string? fileName);
+
+    /// <summary>Builds the public URL for a filename stored under the frame-previews folder, or null if empty.</summary>
+    string? BuildFramePreviewUrl(string? fileName);
 }

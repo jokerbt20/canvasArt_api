@@ -26,7 +26,6 @@ public record OrderItemDto
     public string PaintingName { get; init; } = string.Empty;
     public string SizeLabel { get; init; } = string.Empty;
     public string? FrameName { get; init; }
-    public string? FrameSizeLabel { get; init; }
     public string? ThumbnailPath { get; init; }
     public decimal UnitPrice { get; init; }
     public decimal FramePrice { get; init; }

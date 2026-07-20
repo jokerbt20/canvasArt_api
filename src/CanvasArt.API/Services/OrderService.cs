@@ -39,7 +39,7 @@ public sealed class OrderService : IOrderService
 
     public async Task<OrderDetailDto> CreateAsync(CreateOrderRequest request, CancellationToken cancellationToken = default)
     {
-        var lines = await _pricer.PriceAsync(request.Items, enforceStock: true, cancellationToken);
+        var lines = await _pricer.PriceAsync(request.Items, cancellationToken);
 
         var shipping = await ResolveShippingAsync(cancellationToken);
         var subTotal = Math.Round(lines.Sum(l => l.LineSubTotal), 2, MidpointRounding.AwayFromZero);
@@ -73,12 +73,10 @@ public sealed class OrderService : IOrderService
             PaintingId = l.PaintingId,
             PaintingSizeId = l.PaintingSizeId,
             FrameId = l.FrameId,
-            FrameSizeId = l.FrameSizeId,
             PaintingCode = l.PaintingCode,
             PaintingName = l.PaintingName,
             SizeLabel = l.SizeLabel,
             FrameName = l.FrameName,
-            FrameSizeLabel = l.FrameSizeLabel,
             ThumbnailPath = l.ThumbnailPath,
             UnitPrice = l.PaintingBasePrice,
             FramePrice = l.FrameBasePrice,

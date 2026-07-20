@@ -77,6 +77,7 @@ try
     builder.Services.AddScoped<ITagService, TagService>();
     builder.Services.AddScoped<IPaintingService, PaintingService>();
     builder.Services.AddScoped<IFrameService, FrameService>();
+    builder.Services.AddScoped<IFramePreviewService, FramePreviewService>();
     builder.Services.AddScoped<IPromotionService, PromotionService>();
     builder.Services.AddScoped<ICartService, CartService>();
     builder.Services.AddScoped<IOrderService, OrderService>();

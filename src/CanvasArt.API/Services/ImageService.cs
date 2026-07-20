@@ -8,6 +8,7 @@ using SixLabors.Fonts;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 
@@ -34,6 +35,7 @@ public sealed class ImageService : IImageService, IDisposable
     public string ThumbsFolder => _uploads.ThumbsFolder;
     public string FramesFolder => _uploads.FramesFolder;
     public string CustomersFolder => _uploads.CustomersFolder;
+    public string FramePreviewsFolder => _uploads.FramePreviewsFolder;
 
     public ImageService(
         IOptions<ImageSettings> options, IOptions<UploadsSettings> uploadsOptions, IHostEnvironment env, ILogger<ImageService> logger)
@@ -104,7 +106,7 @@ public sealed class ImageService : IImageService, IDisposable
     }
 
     public async Task<SimpleImageSet> ProcessSimpleImageAsync(
-        Stream content, string originalFileName, string imageFolder, string thumbFolder, CancellationToken cancellationToken = default)
+        Stream content, string originalFileName, string imageFolder, string thumbFolder, CancellationToken cancellationToken = default, bool preserveAlpha = false)
     {
         var (bytes, _) = await ReadAndValidateAsync(content, originalFileName, cancellationToken);
 
@@ -113,14 +115,28 @@ public sealed class ImageService : IImageService, IDisposable
         var height = image.Height;
 
         var name = BuildFileName();
+        var ext = preserveAlpha ? "png" : "jpg";
+        var contentType = preserveAlpha ? "image/png" : "image/jpeg";
 
-        var imageName = $"{name}.jpg";
-        var thumbName = $"{name}_thumb.jpg";
+        var imageName = $"{name}.{ext}";
+        var thumbName = $"{name}_thumb.{ext}";
 
-        SaveResized(image, imageFolder, imageName, _settings.ResizedMaxDimension);
-        SaveResized(image, thumbFolder, thumbName, _settings.ThumbnailMaxDimension);
+        SaveResized(image, imageFolder, imageName, _settings.ResizedMaxDimension, preserveAlpha);
+        SaveResized(image, thumbFolder, thumbName, _settings.ThumbnailMaxDimension, preserveAlpha);
 
-        return new SimpleImageSet(imageName, thumbName, Path.GetFileName(originalFileName), "image/jpeg", bytes.LongLength, width, height);
+        return new SimpleImageSet(imageName, thumbName, Path.GetFileName(originalFileName), contentType, bytes.LongLength, width, height);
+    }
+
+    public Task SaveGeneratedPngAsync(Image<Rgba32> image, string folder, string fileName, CancellationToken cancellationToken = default)
+    {
+        SavePublicPng(image, folder, fileName);
+        return Task.CompletedTask;
+    }
+
+    public bool PublicFileExists(string folder, string fileName)
+    {
+        var physical = Path.GetFullPath(Path.Combine(_publicStorageRoot, folder, fileName));
+        return physical.StartsWith(_publicStorageRoot, StringComparison.OrdinalIgnoreCase) && File.Exists(physical);
     }
 
     public void DeleteFiles(params string?[] relativePaths)
@@ -189,6 +205,8 @@ public sealed class ImageService : IImageService, IDisposable
 
     public string? BuildCustomerUrl(string? fileName) => BuildPublicUrl(fileName, _uploads.CustomersFolder);
 
+    public string? BuildFramePreviewUrl(string? fileName) => BuildPublicUrl(fileName, _uploads.FramePreviewsFolder);
+
     // ----- helpers -----
 
     private IEnumerable<string> PublicFolders()
@@ -197,6 +215,7 @@ public sealed class ImageService : IImageService, IDisposable
         yield return _uploads.ThumbsFolder;
         yield return _uploads.FramesFolder;
         yield return _uploads.CustomersFolder;
+        yield return _uploads.FramePreviewsFolder;
     }
 
     private string? BuildPublicUrl(string? fileName, string folder)
@@ -245,14 +264,17 @@ public sealed class ImageService : IImageService, IDisposable
         }
     }
 
-    private void SaveResized(Image<Rgba32> source, string folder, string fileName, int maxDimension)
+    private void SaveResized(Image<Rgba32> source, string folder, string fileName, int maxDimension, bool asPng = false)
     {
         using var clone = source.Clone(ctx => ctx.Resize(new ResizeOptions
         {
             Mode = ResizeMode.Max,
             Size = new Size(maxDimension, maxDimension)
         }));
-        SavePublic(clone, folder, fileName);
+        if (asPng)
+            SavePublicPng(clone, folder, fileName);
+        else
+            SavePublic(clone, folder, fileName);
     }
 
     private void SaveWatermarked(Image<Rgba32> source, string folder, string fileName, int maxDimension)
@@ -351,6 +373,15 @@ public sealed class ImageService : IImageService, IDisposable
             throw new InvalidOperationException($"Invalid storage path for '{fileName}'.");
         Directory.CreateDirectory(Path.GetDirectoryName(physical)!);
         image.Save(physical, new JpegEncoder { Quality = _settings.JpegQuality });
+    }
+
+    private void SavePublicPng(Image<Rgba32> image, string folder, string fileName)
+    {
+        var physical = Path.GetFullPath(Path.Combine(_publicStorageRoot, folder, fileName));
+        if (!physical.StartsWith(_publicStorageRoot, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException($"Invalid storage path for '{fileName}'.");
+        Directory.CreateDirectory(Path.GetDirectoryName(physical)!);
+        image.Save(physical, new PngEncoder());
     }
 
     private static async Task WriteBytesAsync(string root, string relativePath, byte[] bytes, CancellationToken ct)

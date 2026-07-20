@@ -18,8 +18,6 @@ public sealed record PricedLine
 
     public int? FrameId { get; init; }
     public string? FrameName { get; init; }
-    public int? FrameSizeId { get; init; }
-    public string? FrameSizeLabel { get; init; }
     public decimal FrameBasePrice { get; init; }
 
     public required int Quantity { get; init; }
@@ -39,7 +37,8 @@ public sealed record PricedLine
 
 /// <summary>
 /// Resolves cart line requests into fully-priced lines: validates the referenced painting,
-/// size, optional frame and frame size, enforces compatibility and stock, and applies promotions.
+/// size, and optional frame, enforces compatibility, and applies promotions. Frames have no
+/// sizes of their own — every frame is compatible with every painting size.
 /// </summary>
 public sealed class CartPricer
 {
@@ -55,7 +54,7 @@ public sealed class CartPricer
     }
 
     public async Task<IReadOnlyList<PricedLine>> PriceAsync(
-        IReadOnlyList<CartLineRequest> items, bool enforceStock, CancellationToken cancellationToken = default)
+        IReadOnlyList<CartLineRequest> items, CancellationToken cancellationToken = default)
     {
         if (items.Count == 0)
             throw new ValidationException("The cart is empty.");
@@ -73,14 +72,11 @@ public sealed class CartPricer
             if (size is null || size.PaintingId != painting.Id || !size.IsActive)
                 throw new ValidationException($"Size {line.PaintingSizeId} is not valid for painting '{painting.Name}'.");
 
-            if (enforceStock && size.Stock < line.Quantity)
-                throw new ConflictException($"Only {size.Stock} unit(s) of '{painting.Name}' ({size.Label}) remain in stock.");
-
             var thumbnail = await _paintings.GetPrimaryThumbnailAsync(painting.Id, cancellationToken);
 
-            // Optional frame.
-            int? frameId = null, frameSizeId = null;
-            string? frameName = null, frameSizeLabel = null;
+            // Optional frame. Frames have no sizes of their own, so any active, compatible frame applies.
+            int? frameId = null;
+            string? frameName = null;
             var frameBasePrice = 0m;
 
             if (line.FrameId is int fid)
@@ -92,21 +88,9 @@ public sealed class CartPricer
                 if (!await _frames.IsCompatibleAsync(painting.Id, fid, cancellationToken))
                     throw new ValidationException($"Frame '{frame.Name}' is not compatible with painting '{painting.Name}'.");
 
-                if (line.FrameSizeId is not int fsid)
-                    throw new ValidationException("A frame size is required when a frame is selected.");
-
-                var frameSize = await _frames.GetSizeAsync(fsid, cancellationToken);
-                if (frameSize is null || frameSize.FrameId != fid || !frameSize.IsActive)
-                    throw new ValidationException($"Size {fsid} is not valid for frame '{frame.Name}'.");
-
-                if (enforceStock && frameSize.Stock < line.Quantity)
-                    throw new ConflictException($"Only {frameSize.Stock} unit(s) of frame '{frame.Name}' ({frameSize.Label}) remain in stock.");
-
                 frameId = fid;
                 frameName = frame.Name;
-                frameSizeId = fsid;
-                frameSizeLabel = frameSize.Label;
-                frameBasePrice = frameSize.Price;
+                frameBasePrice = frame.BasePrice;
             }
 
             PricedLine priced;
@@ -146,8 +130,6 @@ public sealed class CartPricer
                     PaintingBasePrice = size.Price,
                     FrameId = frameId,
                     FrameName = frameName,
-                    FrameSizeId = frameSizeId,
-                    FrameSizeLabel = frameSizeLabel,
                     FrameBasePrice = frameBasePrice,
                     Quantity = line.Quantity,
                     UnitOriginal = b.TotalOriginal,
@@ -176,8 +158,6 @@ public sealed class CartPricer
             SizeLabel = l.SizeLabel,
             FrameId = l.FrameId,
             FrameName = l.FrameName,
-            FrameSizeId = l.FrameSizeId,
-            FrameSizeLabel = l.FrameSizeLabel,
             PaintingUnitPrice = l.PaintingBasePrice,
             FrameUnitPrice = l.FrameBasePrice,
             UnitPrice = l.UnitOriginal,

@@ -11,7 +11,7 @@ public sealed class CartService : ICartService
 
     public async Task<CartResponse> CalculateAsync(CartRequest request, CancellationToken cancellationToken = default)
     {
-        var lines = await _pricer.PriceAsync(request.Items, enforceStock: false, cancellationToken);
+        var lines = await _pricer.PriceAsync(request.Items, cancellationToken);
         return CartPricer.ToCartResponse(lines);
     }
 }

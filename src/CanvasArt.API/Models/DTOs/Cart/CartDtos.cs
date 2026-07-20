@@ -6,7 +6,6 @@ public record CartLineRequest
     public int PaintingId { get; init; }
     public int PaintingSizeId { get; init; }
     public int? FrameId { get; init; }
-    public int? FrameSizeId { get; init; }
     public int Quantity { get; init; } = 1;
 }
 
@@ -24,8 +23,6 @@ public record CartLineResponse
     public string SizeLabel { get; init; } = string.Empty;
     public int? FrameId { get; init; }
     public string? FrameName { get; init; }
-    public int? FrameSizeId { get; init; }
-    public string? FrameSizeLabel { get; init; }
 
     public decimal PaintingUnitPrice { get; init; }
     public decimal FrameUnitPrice { get; init; }

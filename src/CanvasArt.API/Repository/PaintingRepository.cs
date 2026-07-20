@@ -96,7 +96,7 @@ public sealed class PaintingRepository : RepositoryBase, IPaintingRepository
             INNER JOIN dbo.Categories c ON c.Id = p.CategoryId
             WHERE {whereClause};
 
-            SELECT ps.Id, ps.PaintingId, ps.Label, ps.WidthCm, ps.HeightCm, ps.Price, ps.Stock, ps.Sku, ps.IsDefault, ps.DisplayOrder, ps.IsActive
+            SELECT ps.Id, ps.PaintingId, ps.Label, ps.WidthCm, ps.HeightCm, ps.Price, ps.Sku, ps.IsDefault, ps.DisplayOrder, ps.IsActive
             FROM dbo.PaintingSizes ps
             INNER JOIN dbo.Paintings p ON p.Id = ps.PaintingId
             WHERE {whereClause}
@@ -116,7 +116,7 @@ public sealed class PaintingRepository : RepositoryBase, IPaintingRepository
             WHERE {whereClause}
             ORDER BY t.Name;
 
-            SELECT f.Id, f.Code, f.Name, f.Material, f.Color, f.Description, f.ImagePath, f.ThumbnailPath, f.BasePrice, f.Stock, f.IsActive, f.CreatedAt, f.UpdatedAt
+            SELECT f.Id, f.Code, f.Name, f.Material, f.Color, f.Description, f.ImagePath, f.ThumbnailPath, f.BasePrice, f.IsActive, f.CreatedAt, f.UpdatedAt
             FROM dbo.Frames f
             INNER JOIN dbo.FrameCompatibilities fc ON fc.FrameId = f.Id
             INNER JOIN dbo.Paintings p ON p.Id = fc.PaintingId
@@ -235,13 +235,13 @@ public sealed class PaintingRepository : RepositoryBase, IPaintingRepository
         if (sizes.Count > 0)
         {
             const string sizeSql = """
-                INSERT INTO dbo.PaintingSizes (PaintingId, Label, WidthCm, HeightCm, Price, Stock, Sku, IsDefault, DisplayOrder, IsActive)
-                VALUES (@PaintingId, @Label, @WidthCm, @HeightCm, @Price, @Stock, @Sku, @IsDefault, @DisplayOrder, @IsActive);
+                INSERT INTO dbo.PaintingSizes (PaintingId, Label, WidthCm, HeightCm, Price, Sku, IsDefault, DisplayOrder, IsActive)
+                VALUES (@PaintingId, @Label, @WidthCm, @HeightCm, @Price, @Sku, @IsDefault, @DisplayOrder, @IsActive);
                 """;
             var rows = sizes.Select(s => new
             {
                 PaintingId = paintingId,
-                s.Label, s.WidthCm, s.HeightCm, s.Price, s.Stock, s.Sku, s.IsDefault, s.DisplayOrder, s.IsActive
+                s.Label, s.WidthCm, s.HeightCm, s.Price, s.Sku, s.IsDefault, s.DisplayOrder, s.IsActive
             });
             await conn.ExecuteAsync(new CommandDefinition(sizeSql, rows, tx, cancellationToken: ct));
         }
@@ -278,7 +278,7 @@ public sealed class PaintingRepository : RepositoryBase, IPaintingRepository
     public async Task<PaintingSize?> GetSizeAsync(int paintingSizeId, CancellationToken cancellationToken = default)
     {
         const string sql = """
-            SELECT Id, PaintingId, Label, WidthCm, HeightCm, Price, Stock, Sku, IsDefault, DisplayOrder, IsActive
+            SELECT Id, PaintingId, Label, WidthCm, HeightCm, Price, Sku, IsDefault, DisplayOrder, IsActive
             FROM dbo.PaintingSizes WHERE Id = @Id;
             """;
         using var conn = await OpenAsync(cancellationToken);

@@ -1,6 +1,5 @@
 using CanvasArt.API.Models.Common;
 using CanvasArt.API.Models.DTOs.Frames;
-using CanvasArt.API.Models;
 using CanvasArt.API.Models.Entities;
 using Dapper;
 
@@ -9,7 +8,7 @@ namespace CanvasArt.API.Repository;
 public sealed class FrameRepository : RepositoryBase, IFrameRepository
 {
     private const string EntityColumns =
-        "Id, Code, Name, Material, Color, Description, ImagePath, ThumbnailPath, BasePrice, Stock, IsActive, CreatedAt, UpdatedAt";
+        "Id, Code, Name, Material, Color, Description, ImagePath, ThumbnailPath, BasePrice, IsActive, CreatedAt, UpdatedAt";
 
     public FrameRepository(IDbConnectionFactory factory) : base(factory) { }
 
@@ -26,7 +25,9 @@ public sealed class FrameRepository : RepositoryBase, IFrameRepository
 
         var filters = """
             WHERE (@ActiveOnly = 0 OR f.IsActive = 1)
+              AND (@ActiveOnly = 0 OR f.ImagePath IS NOT NULL)
               AND (@IsActive IS NULL OR f.IsActive = @IsActive)
+              AND (@HasImage IS NULL OR (@HasImage = 1 AND f.ImagePath IS NOT NULL) OR (@HasImage = 0 AND f.ImagePath IS NULL))
               AND (@Material IS NULL OR f.Material = @Material)
               AND (@Color IS NULL OR f.Color = @Color)
               AND (@Search IS NULL OR f.Name LIKE @Like OR f.Code LIKE @Like OR f.Material LIKE @Like)
@@ -35,7 +36,7 @@ public sealed class FrameRepository : RepositoryBase, IFrameRepository
             """;
 
         var sql = $"""
-            SELECT f.Id, f.Code, f.Name, f.Material, f.Color, f.ThumbnailPath, f.BasePrice, f.Stock, f.IsActive
+            SELECT f.Id, f.Code, f.Name, f.Material, f.Color, f.ThumbnailPath, f.BasePrice, f.IsActive
             FROM dbo.Frames f
             {filters}
             ORDER BY {sortColumn} {direction}, f.Id DESC
@@ -48,6 +49,7 @@ public sealed class FrameRepository : RepositoryBase, IFrameRepository
         {
             ActiveOnly = activeOnly ? 1 : 0,
             query.IsActive,
+            query.HasImage,
             query.Material,
             query.Color,
             query.CompatibleWithPaintingId,
@@ -64,23 +66,6 @@ public sealed class FrameRepository : RepositoryBase, IFrameRepository
         return new PagedResult<FrameListItemDto>(items, total, query.Page, query.PageSize);
     }
 
-    public async Task<FrameAggregate?> GetAggregateByIdAsync(int id, CancellationToken cancellationToken = default)
-    {
-        const string sql = $"""
-            SELECT {EntityColumns} FROM dbo.Frames WHERE Id = @Id;
-
-            SELECT Id, FrameId, Label, WidthCm, HeightCm, Price, Stock, Sku, DisplayOrder, IsActive
-            FROM dbo.FrameSizes WHERE FrameId = @Id ORDER BY DisplayOrder, Id;
-            """;
-        using var conn = await OpenAsync(cancellationToken);
-        using var multi = await conn.QueryMultipleAsync(Command(sql, new { Id = id }, cancellationToken));
-        var frame = await multi.ReadSingleOrDefaultAsync<Frame>();
-        if (frame is null)
-            return null;
-        var sizes = (await multi.ReadAsync<FrameSize>()).ToList();
-        return new FrameAggregate(frame, sizes);
-    }
-
     public async Task<Frame?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
         const string sql = $"SELECT {EntityColumns} FROM dbo.Frames WHERE Id = @Id;";
@@ -92,7 +77,8 @@ public sealed class FrameRepository : RepositoryBase, IFrameRepository
     {
         const string sql = $"""
             SELECT {EntityColumns} FROM dbo.Frames f
-            WHERE f.IsActive = 1 AND EXISTS (SELECT 1 FROM dbo.FrameCompatibilities fc WHERE fc.FrameId = f.Id AND fc.PaintingId = @PaintingId)
+            WHERE f.IsActive = 1 AND f.ImagePath IS NOT NULL
+              AND EXISTS (SELECT 1 FROM dbo.FrameCompatibilities fc WHERE fc.FrameId = f.Id AND fc.PaintingId = @PaintingId)
             ORDER BY f.Name;
             """;
         using var conn = await OpenAsync(cancellationToken);
@@ -123,63 +109,27 @@ public sealed class FrameRepository : RepositoryBase, IFrameRepository
         return count == ids.Distinct().Count();
     }
 
-    public async Task<int> CreateAsync(Frame frame, IReadOnlyList<FrameSize> sizes, CancellationToken cancellationToken = default)
+    public async Task<int> CreateAsync(Frame frame, CancellationToken cancellationToken = default)
     {
-        using var conn = await OpenAsync(cancellationToken);
-        using var tx = conn.BeginTransaction();
-        try
-        {
-            const string sql = """
-                INSERT INTO dbo.Frames (Code, Name, Material, Color, Description, ImagePath, ThumbnailPath, BasePrice, Stock, IsActive, CreatedAt, UpdatedAt)
-                OUTPUT INSERTED.Id
-                VALUES (@Code, @Name, @Material, @Color, @Description, @ImagePath, @ThumbnailPath, @BasePrice, @Stock, @IsActive, @CreatedAt, @UpdatedAt);
-                """;
-            var id = await conn.ExecuteScalarAsync<int>(Command(sql, frame, cancellationToken, tx));
-            await InsertSizesAsync(conn, tx, id, sizes, cancellationToken);
-            tx.Commit();
-            return id;
-        }
-        catch
-        {
-            tx.Rollback();
-            throw;
-        }
-    }
-
-    public async Task UpdateAsync(Frame frame, IReadOnlyList<FrameSize> sizes, CancellationToken cancellationToken = default)
-    {
-        using var conn = await OpenAsync(cancellationToken);
-        using var tx = conn.BeginTransaction();
-        try
-        {
-            const string sql = """
-                UPDATE dbo.Frames
-                SET Name = @Name, Material = @Material, Color = @Color, Description = @Description,
-                    BasePrice = @BasePrice, Stock = @Stock, IsActive = @IsActive, UpdatedAt = @UpdatedAt
-                WHERE Id = @Id;
-                """;
-            await conn.ExecuteAsync(Command(sql, frame, cancellationToken, tx));
-            await conn.ExecuteAsync(Command("DELETE FROM dbo.FrameSizes WHERE FrameId = @Id;", new { frame.Id }, cancellationToken, tx));
-            await InsertSizesAsync(conn, tx, frame.Id, sizes, cancellationToken);
-            tx.Commit();
-        }
-        catch
-        {
-            tx.Rollback();
-            throw;
-        }
-    }
-
-    private static async Task InsertSizesAsync(System.Data.IDbConnection conn, System.Data.IDbTransaction tx, int frameId, IReadOnlyList<FrameSize> sizes, CancellationToken ct)
-    {
-        if (sizes.Count == 0)
-            return;
         const string sql = """
-            INSERT INTO dbo.FrameSizes (FrameId, Label, WidthCm, HeightCm, Price, Stock, Sku, DisplayOrder, IsActive)
-            VALUES (@FrameId, @Label, @WidthCm, @HeightCm, @Price, @Stock, @Sku, @DisplayOrder, @IsActive);
+            INSERT INTO dbo.Frames (Code, Name, Material, Color, Description, ImagePath, ThumbnailPath, BasePrice, IsActive, CreatedAt, UpdatedAt)
+            OUTPUT INSERTED.Id
+            VALUES (@Code, @Name, @Material, @Color, @Description, @ImagePath, @ThumbnailPath, @BasePrice, @IsActive, @CreatedAt, @UpdatedAt);
             """;
-        var rows = sizes.Select(s => new { FrameId = frameId, s.Label, s.WidthCm, s.HeightCm, s.Price, s.Stock, s.Sku, s.DisplayOrder, s.IsActive });
-        await conn.ExecuteAsync(new CommandDefinition(sql, rows, tx, cancellationToken: ct));
+        using var conn = await OpenAsync(cancellationToken);
+        return await conn.ExecuteScalarAsync<int>(Command(sql, frame, cancellationToken));
+    }
+
+    public async Task UpdateAsync(Frame frame, CancellationToken cancellationToken = default)
+    {
+        const string sql = """
+            UPDATE dbo.Frames
+            SET Name = @Name, Material = @Material, Color = @Color, Description = @Description,
+                BasePrice = @BasePrice, IsActive = @IsActive, UpdatedAt = @UpdatedAt
+            WHERE Id = @Id;
+            """;
+        using var conn = await OpenAsync(cancellationToken);
+        await conn.ExecuteAsync(Command(sql, frame, cancellationToken));
     }
 
     public async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
@@ -194,13 +144,6 @@ public sealed class FrameRepository : RepositoryBase, IFrameRepository
         const string sql = "UPDATE dbo.Frames SET ImagePath = @ImagePath, ThumbnailPath = @ThumbnailPath, UpdatedAt = SYSUTCDATETIME() WHERE Id = @Id;";
         using var conn = await OpenAsync(cancellationToken);
         await conn.ExecuteAsync(Command(sql, new { Id = frameId, ImagePath = imagePath, ThumbnailPath = thumbnailPath }, cancellationToken));
-    }
-
-    public async Task<FrameSize?> GetSizeAsync(int frameSizeId, CancellationToken cancellationToken = default)
-    {
-        const string sql = "SELECT Id, FrameId, Label, WidthCm, HeightCm, Price, Stock, Sku, DisplayOrder, IsActive FROM dbo.FrameSizes WHERE Id = @Id;";
-        using var conn = await OpenAsync(cancellationToken);
-        return await conn.QuerySingleOrDefaultAsync<FrameSize>(Command(sql, new { Id = frameSizeId }, cancellationToken));
     }
 
     public async Task<bool> IsCompatibleAsync(int paintingId, int frameId, CancellationToken cancellationToken = default)

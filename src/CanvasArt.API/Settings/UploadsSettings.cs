@@ -30,4 +30,7 @@ public sealed class UploadsSettings
 
     /// <summary>Sub-folder holding customer testimonial photos and thumbnails.</summary>
     public string CustomersFolder { get; set; } = "customers";
+
+    /// <summary>Sub-folder holding server-generated framed-painting room-preview composites.</summary>
+    public string FramePreviewsFolder { get; set; } = "frame-previews";
 }

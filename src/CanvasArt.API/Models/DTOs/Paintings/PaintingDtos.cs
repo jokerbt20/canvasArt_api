@@ -12,7 +12,6 @@ public record PaintingSizeDto
     public decimal Price { get; init; }
     public decimal FinalPrice { get; init; }
     public decimal DiscountAmount { get; init; }
-    public int Stock { get; init; }
     public string? Sku { get; init; }
     public bool IsDefault { get; init; }
     public int DisplayOrder { get; init; }
@@ -93,7 +92,6 @@ public record PaintingSizeInput
     public decimal WidthCm { get; init; }
     public decimal HeightCm { get; init; }
     public decimal Price { get; init; }
-    public int Stock { get; init; }
     public string? Sku { get; init; }
     public bool IsDefault { get; init; }
     public int DisplayOrder { get; init; }

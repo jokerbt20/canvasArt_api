@@ -8,7 +8,6 @@ public class PaintingSize
     public decimal WidthCm { get; set; }
     public decimal HeightCm { get; set; }
     public decimal Price { get; set; }
-    public int Stock { get; set; }
     public string? Sku { get; set; }
     public bool IsDefault { get; set; }
     public int DisplayOrder { get; set; }
