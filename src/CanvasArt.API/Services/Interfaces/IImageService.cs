@@ -64,10 +64,11 @@ public interface IImageService
         Stream content, string originalFileName, string imageFolder, string thumbFolder, CancellationToken cancellationToken = default, bool preserveAlpha = false);
 
     /// <summary>
-    /// Saves a server-generated image (e.g. a frame-preview composite) as PNG under the given
-    /// public sub-folder, bypassing upload validation since the caller already produced it.
+    /// Saves a server-generated image (e.g. a frame-preview composite) as a compressed JPEG under
+    /// the given public sub-folder, bypassing upload validation since the caller already produced it.
+    /// Transparent pixels are flattened onto white before encoding.
     /// </summary>
-    Task SaveGeneratedPngAsync(Image<Rgba32> image, string folder, string fileName, CancellationToken cancellationToken = default);
+    Task SaveGeneratedJpegAsync(Image<Rgba32> image, string folder, string fileName, CancellationToken cancellationToken = default);
 
     /// <summary>True if a previously-generated public file already exists (used for cache checks).</summary>
     bool PublicFileExists(string folder, string fileName);

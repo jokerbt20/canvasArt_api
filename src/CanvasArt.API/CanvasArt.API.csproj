@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <!-- Web / API -->
+    <PackageReference Include="MailKit" Version="4.17.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.11" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />

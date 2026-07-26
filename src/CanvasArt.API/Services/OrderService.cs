@@ -4,9 +4,11 @@ using CanvasArt.API.Models.Common;
 using CanvasArt.API.Models.DTOs.Orders;
 using CanvasArt.API.Repository;
 using CanvasArt.API.Services.Interfaces;
+using CanvasArt.API.Settings;
 using CanvasArt.API.Models;
 using CanvasArt.API.Models.Entities;
 using CanvasArt.API.Models.Enums;
+using Microsoft.Extensions.Options;
 
 namespace CanvasArt.API.Services;
 
@@ -17,6 +19,10 @@ public sealed class OrderService : IOrderService
     private readonly IOrderRepository _orders;
     private readonly ISettingRepository _settings;
     private readonly CartPricer _pricer;
+    private readonly IDistributorService _distributors;
+    private readonly IEmailService _email;
+    private readonly EmailSettings _emailSettings;
+    private readonly IImageService _images;
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUser;
     private readonly IDateTimeProvider _clock;
@@ -25,6 +31,10 @@ public sealed class OrderService : IOrderService
         IOrderRepository orders,
         ISettingRepository settings,
         CartPricer pricer,
+        IDistributorService distributors,
+        IEmailService email,
+        IOptions<EmailSettings> emailSettings,
+        IImageService images,
         IMapper mapper,
         ICurrentUserService currentUser,
         IDateTimeProvider clock)
@@ -32,6 +42,10 @@ public sealed class OrderService : IOrderService
         _orders = orders;
         _settings = settings;
         _pricer = pricer;
+        _distributors = distributors;
+        _email = email;
+        _emailSettings = emailSettings.Value;
+        _images = images;
         _mapper = mapper;
         _currentUser = currentUser;
         _clock = clock;
@@ -45,6 +59,13 @@ public sealed class OrderService : IOrderService
         var subTotal = Math.Round(lines.Sum(l => l.LineSubTotal), 2, MidpointRounding.AwayFromZero);
         var discountTotal = Math.Round(lines.Sum(l => l.LineDiscount), 2, MidpointRounding.AwayFromZero);
         var lineTotals = Math.Round(lines.Sum(l => l.LineTotal), 2, MidpointRounding.AwayFromZero);
+
+        // Optional distributor promo code: an extra percentage off the already-discounted goods
+        // total (automatic promotions apply first). Shipping is never discounted.
+        var promo = await _distributors.ResolveForOrderAsync(request.PromoCode, cancellationToken);
+        var promoDiscount = promo is null
+            ? 0m
+            : Math.Round(lineTotals * promo.DiscountPercentage / 100m, 2, MidpointRounding.AwayFromZero);
 
         var now = _clock.UtcNow;
         var order = new Order
@@ -63,7 +84,12 @@ public sealed class OrderService : IOrderService
             SubTotal = subTotal,
             DiscountTotal = discountTotal,
             ShippingCost = shipping,
-            GrandTotal = lineTotals + shipping,
+            GrandTotal = lineTotals - promoDiscount + shipping,
+            PromoCodeId = promo?.PromoCodeId,
+            DistributorId = promo?.DistributorId,
+            PromoCode = promo?.Code,
+            DistributorName = promo?.DistributorName,
+            PromoDiscount = promoDiscount,
             CreatedAt = now,
             UpdatedAt = now
         };
@@ -88,7 +114,31 @@ public sealed class OrderService : IOrderService
         }).ToList();
 
         var id = await _orders.CreateAsync(order, items, cancellationToken);
-        return await GetByIdAsync(id, cancellationToken);
+        var detail = await GetByIdAsync(id, cancellationToken);
+
+        // Fire-and-forget: the customer must never wait on SMTP. Only singletons and the already
+        // materialised DTO are captured, so it is safe to run past the request scope. Uses
+        // CancellationToken.None so completing the response does not cancel the send.
+        _ = SendOrderEmailsAsync(detail);
+
+        return detail;
+    }
+
+    /// <summary>
+    /// Sends the customer confirmation and the shop summary. <see cref="IEmailService"/> swallows
+    /// its own failures, so a mail outage never breaks order creation.
+    /// </summary>
+    private async Task SendOrderEmailsAsync(OrderDetailDto order)
+    {
+        var customerSubject = $"Нарачка / Order {order.OrderNumber} · CanvasArts";
+        await _email.SendAsync(order.Email, customerSubject, OrderEmailComposer.BuildCustomerEmail(order), isHtml: true, cancellationToken: CancellationToken.None);
+
+        var notifyTo = _emailSettings.NotifyToAddress;
+        if (!string.IsNullOrWhiteSpace(notifyTo))
+        {
+            var businessSubject = $"Нова нарачка / New order {order.OrderNumber} — {order.FirstName} {order.LastName}";
+            await _email.SendAsync(notifyTo, businessSubject, OrderEmailComposer.BuildBusinessEmail(order), isHtml: true, cancellationToken: CancellationToken.None);
+        }
     }
 
     public Task<PagedResult<OrderListItemDto>> QueryAsync(OrderQuery query, CancellationToken cancellationToken = default) =>
@@ -162,12 +212,36 @@ public sealed class OrderService : IOrderService
             Status = o.Status,
             SubTotal = o.SubTotal,
             DiscountTotal = o.DiscountTotal,
+            PromoDiscount = o.PromoDiscount,
             ShippingCost = o.ShippingCost,
             GrandTotal = o.GrandTotal,
+            PromoCode = o.PromoCode,
+            DistributorName = o.DistributorName,
             CreatedAt = o.CreatedAt,
             UpdatedAt = o.UpdatedAt,
-            Items = _mapper.Map<List<OrderItemDto>>(a.Items),
+            Items = a.Items.Select(ToItemDto).ToList(),
             History = _mapper.Map<List<OrderStatusHistoryDto>>(a.History)
         };
     }
+
+    /// <summary>
+    /// Maps a stored order item, turning the raw painting thumbnail and the (join-supplied) frame
+    /// thumbnail filenames into fully-qualified public URLs the frontend can render directly.
+    /// </summary>
+    private OrderItemDto ToItemDto(OrderItem i) => new()
+    {
+        Id = i.Id,
+        PaintingId = i.PaintingId,
+        PaintingCode = i.PaintingCode,
+        PaintingName = i.PaintingName,
+        SizeLabel = i.SizeLabel,
+        FrameName = i.FrameName,
+        ThumbnailPath = _images.BuildThumbUrl(i.ThumbnailPath),
+        FrameThumbnailPath = _images.BuildFrameUrl(i.FrameThumbnailPath),
+        UnitPrice = i.UnitPrice,
+        FramePrice = i.FramePrice,
+        DiscountAmount = i.DiscountAmount,
+        Quantity = i.Quantity,
+        LineTotal = i.LineTotal
+    };
 }

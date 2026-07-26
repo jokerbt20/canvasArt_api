@@ -1,15 +1,17 @@
-using System.Net;
-using System.Net.Mail;
 using CanvasArt.API.Services.Interfaces;
 using CanvasArt.API.Settings;
+using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MimeKit;
 
 namespace CanvasArt.API.Services;
 
 /// <summary>
-/// SMTP-backed email sender. Send failures are logged and swallowed so that a broken mail
-/// server never fails the caller's request (e.g. a contact-form submission still persists).
+/// MailKit-backed SMTP email sender. MailKit (unlike System.Net.Mail) supports implicit SSL on
+/// port 465 as well as STARTTLS on 587. Send failures are logged and swallowed so that a broken
+/// mail server never fails the caller's request (e.g. an order still persists if mail is down).
 /// </summary>
 public sealed class EmailService : IEmailService
 {
@@ -22,7 +24,7 @@ public sealed class EmailService : IEmailService
         _logger = logger;
     }
 
-    public async Task SendAsync(string toAddress, string subject, string body, CancellationToken cancellationToken = default)
+    public async Task SendAsync(string toAddress, string subject, string body, bool isHtml = false, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(_settings.SmtpHost))
         {
@@ -30,24 +32,39 @@ public sealed class EmailService : IEmailService
             return;
         }
 
+        // Bound the whole operation so an unreachable mail server fails fast instead of hanging on
+        // the OS socket-connect timeout (~20s). Linked to the caller's token so it still cancels.
+        using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeoutCts.CancelAfter(TimeSpan.FromSeconds(_settings.TimeoutSeconds));
+        var ct = timeoutCts.Token;
+
         try
         {
-            using var message = new MailMessage
-            {
-                From = new MailAddress(_settings.FromAddress, _settings.FromName),
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = false
-            };
-            message.To.Add(toAddress);
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(_settings.FromName, _settings.FromAddress));
+            message.To.Add(MailboxAddress.Parse(toAddress));
+            message.Subject = subject;
 
-            using var client = new SmtpClient(_settings.SmtpHost, _settings.SmtpPort)
+            var builder = new BodyBuilder();
+            if (isHtml)
+                builder.HtmlBody = body;
+            else
+                builder.TextBody = body;
+            message.Body = builder.ToMessageBody();
+
+            // Port 465 is implicit SSL (SSL-on-connect); 587 is STARTTLS; anything else, let MailKit choose.
+            var socketOptions = _settings.SmtpPort switch
             {
-                EnableSsl = _settings.EnableSsl,
-                Credentials = new NetworkCredential(_settings.Username, _settings.Password)
+                465 => SecureSocketOptions.SslOnConnect,
+                587 => SecureSocketOptions.StartTls,
+                _ => _settings.EnableSsl ? SecureSocketOptions.StartTlsWhenAvailable : SecureSocketOptions.Auto
             };
 
-            await client.SendMailAsync(message, cancellationToken);
+            using var client = new SmtpClient { Timeout = _settings.TimeoutSeconds * 1000 };
+            await client.ConnectAsync(_settings.SmtpHost, _settings.SmtpPort, socketOptions, ct);
+            await client.AuthenticateAsync(_settings.Username, _settings.Password, ct);
+            await client.SendAsync(message, ct);
+            await client.DisconnectAsync(quit: true, ct);
         }
         catch (Exception ex)
         {

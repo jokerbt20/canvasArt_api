@@ -11,7 +11,8 @@ public sealed class OrderRepository : RepositoryBase, IOrderRepository
 {
     private const string OrderColumns = """
         Id, OrderNumber, FirstName, LastName, Email, Phone, AddressLine, City, Country, PostalCode,
-        Notes, Status, SubTotal, DiscountTotal, ShippingCost, GrandTotal, CreatedAt, UpdatedAt
+        Notes, Status, SubTotal, DiscountTotal, ShippingCost, GrandTotal,
+        PromoCodeId, DistributorId, PromoCode, DistributorName, PromoDiscount, CreatedAt, UpdatedAt
         """;
 
     public OrderRepository(IDbConnectionFactory factory) : base(factory) { }
@@ -36,7 +37,8 @@ public sealed class OrderRepository : RepositoryBase, IOrderRepository
 
         var sql = $"""
             SELECT o.Id, o.OrderNumber, (o.FirstName + ' ' + o.LastName) AS CustomerName, o.Email, o.Status, o.GrandTotal,
-                   (SELECT COUNT(1) FROM dbo.OrderItems oi WHERE oi.OrderId = o.Id) AS ItemCount, o.CreatedAt
+                   (SELECT COUNT(1) FROM dbo.OrderItems oi WHERE oi.OrderId = o.Id) AS ItemCount,
+                   o.PromoCode, o.DistributorName, o.CreatedAt, o.UpdatedAt
             FROM dbo.Orders o
             {filters}
             ORDER BY {sortColumn} {direction}, o.Id DESC
@@ -76,9 +78,11 @@ public sealed class OrderRepository : RepositoryBase, IOrderRepository
 
             SELECT oi.Id, oi.OrderId, oi.PaintingId, oi.PaintingSizeId, oi.FrameId,
                    oi.PaintingCode, oi.PaintingName, oi.SizeLabel, oi.FrameName, oi.ThumbnailPath,
+                   f.ThumbnailPath AS FrameThumbnailPath,
                    oi.UnitPrice, oi.FramePrice, oi.DiscountAmount, oi.Quantity, oi.LineTotal, oi.AppliedPromotionId, oi.AppliedCombinationPromotionId
             FROM dbo.OrderItems oi
             INNER JOIN dbo.Orders o ON o.Id = oi.OrderId
+            LEFT JOIN dbo.Frames f ON f.Id = oi.FrameId
             WHERE {whereClause}
             ORDER BY oi.Id;
 
@@ -118,10 +122,10 @@ public sealed class OrderRepository : RepositoryBase, IOrderRepository
         {
             const string orderSql = """
                 INSERT INTO dbo.Orders
-                    (OrderNumber, FirstName, LastName, Email, Phone, AddressLine, City, Country, PostalCode, Notes, Status, SubTotal, DiscountTotal, ShippingCost, GrandTotal, CreatedAt, UpdatedAt)
+                    (OrderNumber, FirstName, LastName, Email, Phone, AddressLine, City, Country, PostalCode, Notes, Status, SubTotal, DiscountTotal, ShippingCost, GrandTotal, PromoCodeId, DistributorId, PromoCode, DistributorName, PromoDiscount, CreatedAt, UpdatedAt)
                 OUTPUT INSERTED.Id
                 VALUES
-                    (@OrderNumber, @FirstName, @LastName, @Email, @Phone, @AddressLine, @City, @Country, @PostalCode, @Notes, @Status, @SubTotal, @DiscountTotal, @ShippingCost, @GrandTotal, @CreatedAt, @UpdatedAt);
+                    (@OrderNumber, @FirstName, @LastName, @Email, @Phone, @AddressLine, @City, @Country, @PostalCode, @Notes, @Status, @SubTotal, @DiscountTotal, @ShippingCost, @GrandTotal, @PromoCodeId, @DistributorId, @PromoCode, @DistributorName, @PromoDiscount, @CreatedAt, @UpdatedAt);
                 """;
             var orderId = await conn.ExecuteScalarAsync<int>(Command(orderSql, order, cancellationToken, tx));
 

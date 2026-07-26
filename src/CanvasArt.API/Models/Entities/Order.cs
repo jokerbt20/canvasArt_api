@@ -20,6 +20,16 @@ public class Order
     public decimal DiscountTotal { get; set; }
     public decimal ShippingCost { get; set; }
     public decimal GrandTotal { get; set; }
+
+    // Promo code / distributor attribution. Nullable FKs are SET NULL on delete; the snapshot
+    // columns preserve attribution even if the code or distributor is later edited or removed.
+    public int? PromoCodeId { get; set; }
+    public int? DistributorId { get; set; }
+    public string? PromoCode { get; set; }
+    public string? DistributorName { get; set; }
+    /// <summary>Extra discount granted by the promo code, on top of automatic promotions.</summary>
+    public decimal PromoDiscount { get; set; }
+
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }

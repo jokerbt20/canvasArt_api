@@ -381,36 +381,88 @@ BEGIN
 END
 GO
 
+/* --------------------------- Distributors -------------------------------- */
+IF OBJECT_ID(N'dbo.Distributors', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.Distributors
+    (
+        Id        INT           IDENTITY(1,1) NOT NULL,
+        Name      NVARCHAR(200) NOT NULL,
+        Email     NVARCHAR(256) NULL,
+        Phone     NVARCHAR(40)  NULL,
+        IsActive  BIT           NOT NULL CONSTRAINT DF_Distributors_IsActive DEFAULT (1),
+        CreatedAt DATETIME2(3)  NOT NULL CONSTRAINT DF_Distributors_CreatedAt DEFAULT (SYSUTCDATETIME()),
+        UpdatedAt DATETIME2(3)  NOT NULL CONSTRAINT DF_Distributors_UpdatedAt DEFAULT (SYSUTCDATETIME()),
+        CONSTRAINT PK_Distributors PRIMARY KEY CLUSTERED (Id)
+    );
+    CREATE INDEX IX_Distributors_IsActive ON dbo.Distributors (IsActive) INCLUDE (Name);
+END
+GO
+
+/* ----------------------------- PromoCodes -------------------------------- */
+IF OBJECT_ID(N'dbo.PromoCodes', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.PromoCodes
+    (
+        Id                 INT           IDENTITY(1,1) NOT NULL,
+        DistributorId      INT           NOT NULL,
+        Code               NVARCHAR(50)  NOT NULL,
+        DiscountPercentage DECIMAL(5,2)  NOT NULL,
+        IsActive           BIT           NOT NULL CONSTRAINT DF_PromoCodes_IsActive DEFAULT (1),
+        CreatedAt          DATETIME2(3)  NOT NULL CONSTRAINT DF_PromoCodes_CreatedAt DEFAULT (SYSUTCDATETIME()),
+        UpdatedAt          DATETIME2(3)  NOT NULL CONSTRAINT DF_PromoCodes_UpdatedAt DEFAULT (SYSUTCDATETIME()),
+        CONSTRAINT PK_PromoCodes PRIMARY KEY CLUSTERED (Id),
+        CONSTRAINT UQ_PromoCodes_Code UNIQUE (Code),
+        CONSTRAINT CK_PromoCodes_Percentage CHECK (DiscountPercentage > 0 AND DiscountPercentage <= 100),
+        -- NO ACTION (not CASCADE): a CASCADE here plus the SET NULL FKs on Orders would give SQL
+        -- Server multiple cascade paths to dbo.Orders. DistributorService deletes codes first.
+        CONSTRAINT FK_PromoCodes_Distributors FOREIGN KEY (DistributorId)
+            REFERENCES dbo.Distributors (Id)
+    );
+    CREATE INDEX IX_PromoCodes_DistributorId ON dbo.PromoCodes (DistributorId);
+END
+GO
+
 /* ------------------------------ Orders ----------------------------------- */
 IF OBJECT_ID(N'dbo.Orders', N'U') IS NULL
 BEGIN
     CREATE TABLE dbo.Orders
     (
-        Id            INT            IDENTITY(1,1) NOT NULL,
-        OrderNumber   NVARCHAR(40)   NOT NULL,
-        FirstName     NVARCHAR(100)  NOT NULL,
-        LastName      NVARCHAR(100)  NOT NULL,
-        Email         NVARCHAR(256)  NOT NULL,
-        Phone         NVARCHAR(40)   NOT NULL,
-        AddressLine   NVARCHAR(300)  NOT NULL,
-        City          NVARCHAR(120)  NOT NULL,
-        Country       NVARCHAR(120)  NOT NULL,
-        PostalCode    NVARCHAR(20)   NOT NULL,
-        Notes         NVARCHAR(1000) NULL,
-        Status        INT            NOT NULL CONSTRAINT DF_Orders_Status DEFAULT (0),
-        SubTotal      DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Orders_SubTotal DEFAULT (0),
-        DiscountTotal DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Orders_DiscountTotal DEFAULT (0),
-        ShippingCost  DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Orders_ShippingCost DEFAULT (0),
-        GrandTotal    DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Orders_GrandTotal DEFAULT (0),
-        CreatedAt     DATETIME2(3)   NOT NULL CONSTRAINT DF_Orders_CreatedAt DEFAULT (SYSUTCDATETIME()),
-        UpdatedAt     DATETIME2(3)   NOT NULL CONSTRAINT DF_Orders_UpdatedAt DEFAULT (SYSUTCDATETIME()),
+        Id              INT            IDENTITY(1,1) NOT NULL,
+        OrderNumber     NVARCHAR(40)   NOT NULL,
+        FirstName       NVARCHAR(100)  NOT NULL,
+        LastName        NVARCHAR(100)  NOT NULL,
+        Email           NVARCHAR(256)  NOT NULL,
+        Phone           NVARCHAR(40)   NOT NULL,
+        AddressLine     NVARCHAR(300)  NOT NULL,
+        City            NVARCHAR(120)  NOT NULL,
+        Country         NVARCHAR(120)  NOT NULL,
+        PostalCode      NVARCHAR(20)   NOT NULL,
+        Notes           NVARCHAR(1000) NULL,
+        Status          INT            NOT NULL CONSTRAINT DF_Orders_Status DEFAULT (0),
+        SubTotal        DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Orders_SubTotal DEFAULT (0),
+        DiscountTotal   DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Orders_DiscountTotal DEFAULT (0),
+        ShippingCost    DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Orders_ShippingCost DEFAULT (0),
+        GrandTotal      DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Orders_GrandTotal DEFAULT (0),
+        PromoCodeId     INT            NULL,
+        DistributorId   INT            NULL,
+        PromoCode       NVARCHAR(50)   NULL,
+        DistributorName NVARCHAR(200)  NULL,
+        PromoDiscount   DECIMAL(18,2)  NOT NULL CONSTRAINT DF_Orders_PromoDiscount DEFAULT (0),
+        CreatedAt       DATETIME2(3)   NOT NULL CONSTRAINT DF_Orders_CreatedAt DEFAULT (SYSUTCDATETIME()),
+        UpdatedAt       DATETIME2(3)   NOT NULL CONSTRAINT DF_Orders_UpdatedAt DEFAULT (SYSUTCDATETIME()),
         CONSTRAINT PK_Orders PRIMARY KEY CLUSTERED (Id),
         CONSTRAINT UQ_Orders_OrderNumber UNIQUE (OrderNumber),
-        CONSTRAINT CK_Orders_Status CHECK (Status BETWEEN 0 AND 6)
+        CONSTRAINT CK_Orders_Status CHECK (Status BETWEEN 0 AND 6),
+        CONSTRAINT FK_Orders_PromoCodes FOREIGN KEY (PromoCodeId)
+            REFERENCES dbo.PromoCodes (Id) ON DELETE SET NULL,
+        CONSTRAINT FK_Orders_Distributors FOREIGN KEY (DistributorId)
+            REFERENCES dbo.Distributors (Id) ON DELETE SET NULL
     );
     CREATE INDEX IX_Orders_Status ON dbo.Orders (Status);
     CREATE INDEX IX_Orders_CreatedAt ON dbo.Orders (CreatedAt DESC);
     CREATE INDEX IX_Orders_Email ON dbo.Orders (Email);
+    CREATE INDEX IX_Orders_DistributorId ON dbo.Orders (DistributorId) INCLUDE (Status, GrandTotal, PromoDiscount, CreatedAt);
 END
 GO
 

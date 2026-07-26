@@ -50,7 +50,7 @@ public sealed class ContactService : IContactService
                 ? $"New contact form message from {message.Name}"
                 : $"New contact form message: {message.Subject}";
             var body = $"From: {message.Name} <{message.Email}>\n\n{message.Message}";
-            await _email.SendAsync(_emailSettings.NotifyToAddress, subject, body, cancellationToken);
+            await _email.SendAsync(_emailSettings.NotifyToAddress, subject, body, cancellationToken: cancellationToken);
         }
 
         return _mapper.Map<ContactMessageDto>(message);

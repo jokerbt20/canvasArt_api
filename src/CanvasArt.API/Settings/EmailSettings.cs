@@ -12,4 +12,6 @@ public sealed class EmailSettings
     public string FromAddress { get; set; } = string.Empty;
     public string FromName { get; set; } = "CanvasArt";
     public string NotifyToAddress { get; set; } = string.Empty;
+    /// <summary>Max seconds for the whole SMTP send (connect + auth + send) before it aborts.</summary>
+    public int TimeoutSeconds { get; set; } = 20;
 }

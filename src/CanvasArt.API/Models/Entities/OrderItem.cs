@@ -15,6 +15,9 @@ public class OrderItem
     public string? FrameName { get; set; }
     public string? ThumbnailPath { get; set; }
 
+    /// <summary>Read-only projection: the ordered frame's thumbnail, joined live from dbo.Frames.</summary>
+    public string? FrameThumbnailPath { get; set; }
+
     public decimal UnitPrice { get; set; }
     public decimal FramePrice { get; set; }
     public decimal DiscountAmount { get; set; }

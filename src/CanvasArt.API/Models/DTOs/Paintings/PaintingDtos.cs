@@ -116,6 +116,8 @@ public record CreatePaintingRequest
 
 public record UpdatePaintingRequest
 {
+    /// <summary>Optional unique code. When omitted or blank, the existing code is kept.</summary>
+    public string? Code { get; init; }
     public string Name { get; init; } = string.Empty;
     public string? Slug { get; init; }
     public string? Description { get; init; }

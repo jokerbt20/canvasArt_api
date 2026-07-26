@@ -4,6 +4,7 @@ using CanvasArt.API.Models.DTOs.Cart;
 using CanvasArt.API.Models.DTOs.Categories;
 using CanvasArt.API.Models.DTOs.Cms;
 using CanvasArt.API.Models.DTOs.Contact;
+using CanvasArt.API.Models.DTOs.Distributors;
 using CanvasArt.API.Models.DTOs.Frames;
 using CanvasArt.API.Models.DTOs.Orders;
 using CanvasArt.API.Models.DTOs.Paintings;
@@ -96,6 +97,37 @@ public interface IOrderService
     Task<OrderDetailDto> UpdateStatusAsync(int id, UpdateOrderStatusRequest request, CancellationToken cancellationToken = default);
     Task<OrderStatsDto> GetStatsAsync(CancellationToken cancellationToken = default);
 }
+
+public interface IDistributorService
+{
+    // Distributors
+    Task<PagedResult<DistributorDto>> QueryAsync(DistributorQuery query, CancellationToken cancellationToken = default);
+    Task<DistributorDto> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<DistributorDto> CreateAsync(CreateDistributorRequest request, CancellationToken cancellationToken = default);
+    Task<DistributorDto> UpdateAsync(int id, UpdateDistributorRequest request, CancellationToken cancellationToken = default);
+    Task DeleteAsync(int id, CancellationToken cancellationToken = default);
+
+    // Promo codes
+    Task<IReadOnlyList<PromoCodeDto>> GetPromoCodesAsync(int distributorId, CancellationToken cancellationToken = default);
+    Task<PromoCodeDto> CreatePromoCodeAsync(CreatePromoCodeRequest request, CancellationToken cancellationToken = default);
+    Task<PromoCodeDto> UpdatePromoCodeAsync(int id, UpdatePromoCodeRequest request, CancellationToken cancellationToken = default);
+    Task DeletePromoCodeAsync(int id, CancellationToken cancellationToken = default);
+
+    /// <summary>Storefront preview: validates a code and returns its discount, or throws if unusable.</summary>
+    Task<PromoCodeApplyResult> ApplyAsync(ApplyPromoCodeRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Resolves a code for order creation. Returns null when no code was supplied; throws
+    /// <see cref="Models.Common.ValidationException"/> when a supplied code is unknown or inactive.
+    /// </summary>
+    Task<ResolvedPromo?> ResolveForOrderAsync(string? code, CancellationToken cancellationToken = default);
+
+    // Dashboard
+    Task<IReadOnlyList<DistributorSalesRow>> GetDashboardAsync(DistributorDashboardQuery query, CancellationToken cancellationToken = default);
+}
+
+/// <summary>A validated, ready-to-attribute promo code resolved during order creation.</summary>
+public sealed record ResolvedPromo(int PromoCodeId, int DistributorId, string DistributorName, string Code, decimal DiscountPercentage);
 
 public interface IContactService
 {

@@ -59,6 +59,7 @@ try
     builder.Services.AddScoped<ISettingRepository, SettingRepository>();
     builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
     builder.Services.AddScoped<IContactMessageRepository, ContactMessageRepository>();
+    builder.Services.AddScoped<IDistributorRepository, DistributorRepository>();
 
     // ----- Cross-cutting services -----
     builder.Services.AddSingleton<IDateTimeProvider, SystemDateTimeProvider>();
@@ -81,6 +82,7 @@ try
     builder.Services.AddScoped<IPromotionService, PromotionService>();
     builder.Services.AddScoped<ICartService, CartService>();
     builder.Services.AddScoped<IOrderService, OrderService>();
+    builder.Services.AddScoped<IDistributorService, DistributorService>();
     builder.Services.AddScoped<ICmsService, CmsService>();
     builder.Services.AddScoped<IContactService, ContactService>();
 

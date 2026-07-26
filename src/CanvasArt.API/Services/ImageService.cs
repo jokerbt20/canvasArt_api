@@ -127,9 +127,14 @@ public sealed class ImageService : IImageService, IDisposable
         return new SimpleImageSet(imageName, thumbName, Path.GetFileName(originalFileName), contentType, bytes.LongLength, width, height);
     }
 
-    public Task SaveGeneratedPngAsync(Image<Rgba32> image, string folder, string fileName, CancellationToken cancellationToken = default)
+    public Task SaveGeneratedJpegAsync(Image<Rgba32> image, string folder, string fileName, CancellationToken cancellationToken = default)
     {
-        SavePublicPng(image, folder, fileName);
+        // The composite is a solid framed rectangle, so store it as JPEG at the configured quality —
+        // exactly like uploaded paintings — instead of a multi-MB lossless PNG. Flatten any residual
+        // transparent edge pixels onto white first, since JPEG has no alpha and would otherwise render
+        // them as black fringes around the frame.
+        using var flattened = image.Clone(ctx => ctx.BackgroundColor(Color.White));
+        SavePublic(flattened, folder, fileName);
         return Task.CompletedTask;
     }
 
@@ -233,7 +238,20 @@ public sealed class ImageService : IImageService, IDisposable
             ? Path.GetFileName(fileName.Replace('\\', '/').TrimEnd('/'))
             : fileName;
 
-        return $"{_uploads.BaseUrl.TrimEnd('/')}/{folder}/{name}";
+        // Normalize configured BaseUrl. If it's an absolute URL, use it as-is.
+        // If it's empty or a relative path (for example "/uploads"), return a relative URL
+        // so local development and proxies work without requiring an exact host/port match.
+        var baseUrlRaw = _uploads.BaseUrl?.TrimEnd('/') ?? string.Empty;
+        if (string.IsNullOrEmpty(baseUrlRaw))
+            baseUrlRaw = "/uploads";
+
+        if (System.Uri.TryCreate(baseUrlRaw, System.UriKind.Absolute, out _))
+        {
+            return $"{baseUrlRaw}/{folder}/{name}";
+        }
+
+        var rel = baseUrlRaw.StartsWith('/') ? baseUrlRaw : '/' + baseUrlRaw;
+        return $"{rel}/{folder}/{name}";
     }
 
     private async Task<(byte[] Bytes, string Ext)> ReadAndValidateAsync(Stream content, string fileName, CancellationToken ct)

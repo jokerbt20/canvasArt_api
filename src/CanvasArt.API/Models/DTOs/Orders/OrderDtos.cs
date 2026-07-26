@@ -15,6 +15,8 @@ public record CreateOrderRequest
     public string Country { get; init; } = string.Empty;
     public string PostalCode { get; init; } = string.Empty;
     public string? Notes { get; init; }
+    /// <summary>Optional distributor promo code. Customers may also order without one.</summary>
+    public string? PromoCode { get; init; }
     public IReadOnlyList<CartLineRequest> Items { get; init; } = Array.Empty<CartLineRequest>();
 }
 
@@ -27,6 +29,7 @@ public record OrderItemDto
     public string SizeLabel { get; init; } = string.Empty;
     public string? FrameName { get; init; }
     public string? ThumbnailPath { get; init; }
+    public string? FrameThumbnailPath { get; init; }
     public decimal UnitPrice { get; init; }
     public decimal FramePrice { get; init; }
     public decimal DiscountAmount { get; init; }
@@ -53,7 +56,10 @@ public record OrderListItemDto
     public OrderStatus Status { get; init; }
     public decimal GrandTotal { get; init; }
     public int ItemCount { get; init; }
+    public string? PromoCode { get; init; }
+    public string? DistributorName { get; init; }
     public DateTime CreatedAt { get; init; }
+    public DateTime UpdatedAt { get; init; }
 }
 
 public record OrderDetailDto
@@ -72,8 +78,11 @@ public record OrderDetailDto
     public OrderStatus Status { get; init; }
     public decimal SubTotal { get; init; }
     public decimal DiscountTotal { get; init; }
+    public decimal PromoDiscount { get; init; }
     public decimal ShippingCost { get; init; }
     public decimal GrandTotal { get; init; }
+    public string? PromoCode { get; init; }
+    public string? DistributorName { get; init; }
     public DateTime CreatedAt { get; init; }
     public DateTime UpdatedAt { get; init; }
     public IReadOnlyList<OrderItemDto> Items { get; init; } = Array.Empty<OrderItemDto>();

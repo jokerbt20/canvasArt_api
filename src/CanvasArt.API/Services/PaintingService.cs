@@ -110,6 +110,7 @@ public sealed class PaintingService : IPaintingService
         var frameIds = await ValidateFramesAsync(request.CompatibleFrameIds, cancellationToken);
         var tagIds = await ValidateTagsAsync(request.TagIds, cancellationToken);
 
+        existing.Code = await ResolveUpdatedCodeAsync(request.Code, existing.Code, id, cancellationToken);
         existing.Name = request.Name.Trim();
         existing.Slug = await EnsureUniqueSlugAsync(request.Slug, request.Name, id, cancellationToken);
         existing.Description = request.Description?.Trim();
@@ -308,6 +309,19 @@ public sealed class PaintingService : IPaintingService
                 return code;
         }
         throw new ConflictException("Unable to generate a unique painting code.");
+    }
+
+    private async Task<string> ResolveUpdatedCodeAsync(string? requested, string currentCode, int excludeId, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(requested))
+            return currentCode;
+
+        var code = requested.Trim().ToUpperInvariant();
+        if (code == currentCode)
+            return currentCode;
+        if (await _paintings.CodeExistsAsync(code, excludeId, ct))
+            throw new ConflictException($"Painting code '{code}' is already in use.");
+        return code;
     }
 
     private async Task<string> EnsureUniqueSlugAsync(string? requested, string name, int? excludeId, CancellationToken ct)

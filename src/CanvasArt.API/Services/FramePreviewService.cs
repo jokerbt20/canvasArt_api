@@ -43,7 +43,7 @@ public sealed class FramePreviewService : IFramePreviewService
 
         var image = await ResolvePaintingImageAsync(paintingId, paintingImageId, cancellationToken);
 
-        var fileName = $"pv-{image.Id}-{frame.Id}-{frame.UpdatedAt.Ticks}.png";
+        var fileName = $"pv-{image.Id}-{frame.Id}-{frame.UpdatedAt.Ticks}.jpg";
 
         if (_images.PublicFileExists(_images.FramePreviewsFolder, fileName))
         {
@@ -77,7 +77,7 @@ public sealed class FramePreviewService : IFramePreviewService
         }
 
         using var framed = FrameCompositor.BuildFrame(paintingImage, cornerImage);
-        await _images.SaveGeneratedPngAsync(framed, _images.FramePreviewsFolder, fileName, cancellationToken);
+        await _images.SaveGeneratedJpegAsync(framed, _images.FramePreviewsFolder, fileName, cancellationToken);
 
         return new FramePreviewDto
         {
