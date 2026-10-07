@@ -37,7 +37,7 @@ public record PaintingListItemDto
 {
     public int Id { get; init; }
     public string Code { get; init; } = string.Empty;
-    public string Name { get; init; } = string.Empty;
+    public string? Name { get; init; }
     public string Slug { get; init; } = string.Empty;
     public int CategoryId { get; init; }
     public string? CategoryName { get; init; }
@@ -47,13 +47,20 @@ public record PaintingListItemDto
     public bool IsPublished { get; init; }
     public bool IsFeatured { get; init; }
     public DateTime CreatedAt { get; init; }
+
+    // Admin-only bookkeeping — null on the public listing.
+    public DateTime? UpdatedAt { get; init; }
+    public long? ViewCount { get; init; }
+    public int? FrameCount { get; init; }
+    public int? SizeCount { get; init; }
+    public int? ImageCount { get; init; }
 }
 
 public record PaintingDetailDto
 {
     public int Id { get; init; }
     public string Code { get; init; } = string.Empty;
-    public string Name { get; init; } = string.Empty;
+    public string? Name { get; init; }
     public string Slug { get; init; } = string.Empty;
     public string? Description { get; init; }
     public string? Context { get; init; }
@@ -101,7 +108,7 @@ public record PaintingSizeInput
 public record CreatePaintingRequest
 {
     public string? Code { get; init; }
-    public string Name { get; init; } = string.Empty;
+    public string? Name { get; init; }
     public string? Slug { get; init; }
     public string? Description { get; init; }
     public string? Context { get; init; }
@@ -118,7 +125,7 @@ public record UpdatePaintingRequest
 {
     /// <summary>Optional unique code. When omitted or blank, the existing code is kept.</summary>
     public string? Code { get; init; }
-    public string Name { get; init; } = string.Empty;
+    public string? Name { get; init; }
     public string? Slug { get; init; }
     public string? Description { get; init; }
     public string? Context { get; init; }
@@ -141,4 +148,6 @@ public class PaintingQuery : PagedQuery
     public decimal? MinPrice { get; set; }
     public decimal? MaxPrice { get; set; }
     public string? Color { get; set; }
+    /// <summary>true: only paintings with at least one compatible frame; false: only those with none.</summary>
+    public bool? HasFrames { get; set; }
 }

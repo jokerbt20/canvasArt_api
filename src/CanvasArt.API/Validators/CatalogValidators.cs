@@ -62,7 +62,7 @@ public sealed class CreatePaintingRequestValidator : AbstractValidator<CreatePai
 {
     public CreatePaintingRequestValidator()
     {
-        RuleFor(x => x.Name).NotEmpty().MaximumLength(200);
+        RuleFor(x => x.Name).MaximumLength(200);
         RuleFor(x => x.Code).MaximumLength(50);
         RuleFor(x => x.Slug).MaximumLength(220);
         RuleFor(x => x.Description).MaximumLength(4000);
@@ -80,7 +80,7 @@ public sealed class UpdatePaintingRequestValidator : AbstractValidator<UpdatePai
 {
     public UpdatePaintingRequestValidator()
     {
-        RuleFor(x => x.Name).NotEmpty().MaximumLength(200);
+        RuleFor(x => x.Name).MaximumLength(200);
         RuleFor(x => x.Slug).MaximumLength(220);
         RuleFor(x => x.Description).MaximumLength(4000);
         RuleFor(x => x.Context).MaximumLength(4000);

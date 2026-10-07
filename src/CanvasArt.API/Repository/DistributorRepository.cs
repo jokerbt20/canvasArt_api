@@ -9,7 +9,7 @@ namespace CanvasArt.API.Repository;
 public sealed class DistributorRepository : RepositoryBase, IDistributorRepository
 {
     private const string DistributorColumns = "Id, Name, Email, Phone, IsActive, CreatedAt, UpdatedAt";
-    private const string PromoCodeColumns = "Id, DistributorId, Code, DiscountPercentage, IsActive, CreatedAt, UpdatedAt";
+    private const string PromoCodeColumns = "Id, DistributorId, Code, DiscountPercentage, IsActive, StartsAt, EndsAt, CreatedAt, UpdatedAt";
 
     public DistributorRepository(IDbConnectionFactory factory) : base(factory) { }
 
@@ -110,7 +110,9 @@ public sealed class DistributorRepository : RepositoryBase, IDistributorReposito
     public async Task<IReadOnlyList<PromoCodeDto>> GetPromoCodesByDistributorAsync(int distributorId, CancellationToken cancellationToken = default)
     {
         const string sql = """
-            SELECT pc.Id, pc.DistributorId, d.Name AS DistributorName, pc.Code, pc.DiscountPercentage, pc.IsActive, pc.CreatedAt
+            SELECT pc.Id, pc.DistributorId, d.Name AS DistributorName, pc.Code, pc.DiscountPercentage, pc.IsActive,
+                   pc.StartsAt, pc.EndsAt, pc.CreatedAt,
+                   CAST(CASE WHEN pc.IsActive = 1 AND d.IsActive = 1 AND (pc.StartsAt IS NULL OR pc.StartsAt <= SYSUTCDATETIME()) AND (pc.EndsAt IS NULL OR SYSUTCDATETIME() < DATEADD(DAY, 1, CAST(pc.EndsAt AS DATE))) THEN 1 ELSE 0 END AS BIT) AS IsCurrentlyValid
             FROM dbo.PromoCodes pc
             INNER JOIN dbo.Distributors d ON d.Id = pc.DistributorId
             WHERE pc.DistributorId = @DistributorId
@@ -130,7 +132,7 @@ public sealed class DistributorRepository : RepositoryBase, IDistributorReposito
     public async Task<PromoCode?> GetPromoCodeByCodeAsync(string code, CancellationToken cancellationToken = default)
     {
         const string sql = """
-            SELECT pc.Id, pc.DistributorId, pc.Code, pc.DiscountPercentage, pc.IsActive, pc.CreatedAt, pc.UpdatedAt,
+            SELECT pc.Id, pc.DistributorId, pc.Code, pc.DiscountPercentage, pc.IsActive, pc.StartsAt, pc.EndsAt, pc.CreatedAt, pc.UpdatedAt,
                    d.Name AS DistributorName, d.IsActive AS DistributorIsActive
             FROM dbo.PromoCodes pc
             INNER JOIN dbo.Distributors d ON d.Id = pc.DistributorId
@@ -154,9 +156,9 @@ public sealed class DistributorRepository : RepositoryBase, IDistributorReposito
     public async Task<int> CreatePromoCodeAsync(PromoCode promoCode, CancellationToken cancellationToken = default)
     {
         const string sql = """
-            INSERT INTO dbo.PromoCodes (DistributorId, Code, DiscountPercentage, IsActive, CreatedAt, UpdatedAt)
+            INSERT INTO dbo.PromoCodes (DistributorId, Code, DiscountPercentage, IsActive, StartsAt, EndsAt, CreatedAt, UpdatedAt)
             OUTPUT INSERTED.Id
-            VALUES (@DistributorId, @Code, @DiscountPercentage, @IsActive, @CreatedAt, @UpdatedAt);
+            VALUES (@DistributorId, @Code, @DiscountPercentage, @IsActive, @StartsAt, @EndsAt, @CreatedAt, @UpdatedAt);
             """;
         using var conn = await OpenAsync(cancellationToken);
         return await conn.ExecuteScalarAsync<int>(Command(sql, promoCode, cancellationToken));
@@ -166,7 +168,8 @@ public sealed class DistributorRepository : RepositoryBase, IDistributorReposito
     {
         const string sql = """
             UPDATE dbo.PromoCodes
-            SET Code = @Code, DiscountPercentage = @DiscountPercentage, IsActive = @IsActive, UpdatedAt = @UpdatedAt
+            SET Code = @Code, DiscountPercentage = @DiscountPercentage, IsActive = @IsActive,
+                StartsAt = @StartsAt, EndsAt = @EndsAt, UpdatedAt = @UpdatedAt
             WHERE Id = @Id;
             """;
         using var conn = await OpenAsync(cancellationToken);

@@ -40,11 +40,14 @@ BEGIN
         Code               NVARCHAR(50)  NOT NULL,
         DiscountPercentage DECIMAL(5,2)  NOT NULL,
         IsActive           BIT           NOT NULL CONSTRAINT DF_PromoCodes_IsActive DEFAULT (1),
+        StartsAt           DATETIME2(3)  NULL,
+        EndsAt             DATETIME2(3)  NULL,
         CreatedAt          DATETIME2(3)  NOT NULL CONSTRAINT DF_PromoCodes_CreatedAt DEFAULT (SYSUTCDATETIME()),
         UpdatedAt          DATETIME2(3)  NOT NULL CONSTRAINT DF_PromoCodes_UpdatedAt DEFAULT (SYSUTCDATETIME()),
         CONSTRAINT PK_PromoCodes PRIMARY KEY CLUSTERED (Id),
         CONSTRAINT UQ_PromoCodes_Code UNIQUE (Code),
         CONSTRAINT CK_PromoCodes_Percentage CHECK (DiscountPercentage > 0 AND DiscountPercentage <= 100),
+        CONSTRAINT CK_PromoCodes_Window CHECK (StartsAt IS NULL OR EndsAt IS NULL OR EndsAt >= StartsAt),
         -- NO ACTION (not CASCADE): a CASCADE here plus the SET NULL FKs on Orders would give SQL
         -- Server multiple cascade paths to dbo.Orders. DistributorService deletes codes first.
         CONSTRAINT FK_PromoCodes_Distributors FOREIGN KEY (DistributorId)

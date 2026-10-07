@@ -19,6 +19,8 @@ public sealed class PaintingRepository : RepositoryBase, IPaintingRepository
             "price" => "FromPrice",
             "featured" => "p.IsFeatured",
             "views" => "p.ViewCount",
+            "updated" => "p.UpdatedAt",
+            "code" => "p.Code",
             _ => "p.CreatedAt"
         };
         var direction = query.IsDescending ? "DESC" : "ASC";
@@ -34,6 +36,18 @@ public sealed class PaintingRepository : RepositoryBase, IPaintingRepository
               AND (@TagId IS NULL OR EXISTS (SELECT 1 FROM dbo.PaintingTags pt WHERE pt.PaintingId = p.Id AND pt.TagId = @TagId))
               AND (@MinPrice IS NULL OR EXISTS (SELECT 1 FROM dbo.PaintingSizes ps WHERE ps.PaintingId = p.Id AND ps.IsActive = 1 AND ps.Price >= @MinPrice))
               AND (@MaxPrice IS NULL OR EXISTS (SELECT 1 FROM dbo.PaintingSizes ps WHERE ps.PaintingId = p.Id AND ps.IsActive = 1 AND ps.Price <= @MaxPrice))
+              AND (@HasFrames IS NULL
+                   OR (@HasFrames = 1 AND EXISTS (SELECT 1 FROM dbo.FrameCompatibilities fc WHERE fc.PaintingId = p.Id))
+                   OR (@HasFrames = 0 AND NOT EXISTS (SELECT 1 FROM dbo.FrameCompatibilities fc WHERE fc.PaintingId = p.Id)))
+            """;
+
+        // Bookkeeping columns only for the admin listing.
+        var adminColumns = publishedOnly ? "" : """
+            ,
+                p.UpdatedAt, p.ViewCount,
+                (SELECT COUNT(1) FROM dbo.FrameCompatibilities fc WHERE fc.PaintingId = p.Id) AS FrameCount,
+                (SELECT COUNT(1) FROM dbo.PaintingSizes ps WHERE ps.PaintingId = p.Id AND ps.IsActive = 1) AS SizeCount,
+                (SELECT COUNT(1) FROM dbo.PaintingImages pi WHERE pi.PaintingId = p.Id) AS ImageCount
             """;
 
         var sql = $"""
@@ -42,7 +56,7 @@ public sealed class PaintingRepository : RepositoryBase, IPaintingRepository
                 (SELECT TOP 1 pi.ThumbnailPath FROM dbo.PaintingImages pi WHERE pi.PaintingId = p.Id
                     ORDER BY pi.IsPrimary DESC, pi.DisplayOrder ASC, pi.Id ASC) AS ThumbnailPath,
                 ISNULL((SELECT MIN(ps.Price) FROM dbo.PaintingSizes ps WHERE ps.PaintingId = p.Id AND ps.IsActive = 1), 0) AS FromPrice,
-                p.IsPublished, p.IsFeatured, p.CreatedAt
+                p.IsPublished, p.IsFeatured, p.CreatedAt{adminColumns}
             FROM dbo.Paintings p
             INNER JOIN dbo.Categories c ON c.Id = p.CategoryId
             {filters}
@@ -67,6 +81,7 @@ public sealed class PaintingRepository : RepositoryBase, IPaintingRepository
             query.TagId,
             query.MinPrice,
             query.MaxPrice,
+            query.HasFrames,
             query.Search,
             Like = $"%{query.Search}%",
             query.Offset,

@@ -75,13 +75,14 @@ public sealed class PaintingService : IPaintingService
         var tagIds = await ValidateTagsAsync(request.TagIds, cancellationToken);
 
         var code = await ResolveCodeAsync(request.Code, cancellationToken);
-        var slug = await EnsureUniqueSlugAsync(request.Slug, request.Name, null, cancellationToken);
+        var name = NormalizeName(request.Name);
+        var slug = await EnsureUniqueSlugAsync(request.Slug, name ?? code, null, cancellationToken);
 
         var now = _clock.UtcNow;
         var painting = new Painting
         {
             Code = code,
-            Name = request.Name.Trim(),
+            Name = name,
             Slug = slug,
             Description = request.Description?.Trim(),
             Context = request.Context?.Trim(),
@@ -111,8 +112,8 @@ public sealed class PaintingService : IPaintingService
         var tagIds = await ValidateTagsAsync(request.TagIds, cancellationToken);
 
         existing.Code = await ResolveUpdatedCodeAsync(request.Code, existing.Code, id, cancellationToken);
-        existing.Name = request.Name.Trim();
-        existing.Slug = await EnsureUniqueSlugAsync(request.Slug, request.Name, id, cancellationToken);
+        existing.Name = NormalizeName(request.Name);
+        existing.Slug = await EnsureUniqueSlugAsync(request.Slug, existing.Name ?? existing.Code, id, cancellationToken);
         existing.Description = request.Description?.Trim();
         existing.Context = request.Context?.Trim();
         existing.Colors = SerializeColors(request.Colors);
@@ -323,6 +324,10 @@ public sealed class PaintingService : IPaintingService
             throw new ConflictException($"Painting code '{code}' is already in use.");
         return code;
     }
+
+    /// <summary>Name is optional: blank input is stored as null.</summary>
+    private static string? NormalizeName(string? name) =>
+        string.IsNullOrWhiteSpace(name) ? null : name.Trim();
 
     private async Task<string> EnsureUniqueSlugAsync(string? requested, string name, int? excludeId, CancellationToken ct)
     {

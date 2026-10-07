@@ -65,12 +65,14 @@ public sealed class CartPricer
         {
             var painting = await _paintings.GetByIdAsync(line.PaintingId, cancellationToken)
                            ?? throw new ValidationException($"Painting {line.PaintingId} does not exist.");
+            // Unnamed paintings are identified by their code in cart/order lines and emails.
+            var paintingLabel = painting.Name ?? painting.Code;
             if (!painting.IsPublished)
-                throw new ValidationException($"Painting '{painting.Name}' is not available.");
+                throw new ValidationException($"Painting '{paintingLabel}' is not available.");
 
             var size = await _paintings.GetSizeAsync(line.PaintingSizeId, cancellationToken);
             if (size is null || size.PaintingId != painting.Id || !size.IsActive)
-                throw new ValidationException($"Size {line.PaintingSizeId} is not valid for painting '{painting.Name}'.");
+                throw new ValidationException($"Size {line.PaintingSizeId} is not valid for painting '{paintingLabel}'.");
 
             var thumbnail = await _paintings.GetPrimaryThumbnailAsync(painting.Id, cancellationToken);
 
@@ -86,7 +88,7 @@ public sealed class CartPricer
                 if (!frame.IsActive)
                     throw new ValidationException($"Frame '{frame.Name}' is not available.");
                 if (!await _frames.IsCompatibleAsync(painting.Id, fid, cancellationToken))
-                    throw new ValidationException($"Frame '{frame.Name}' is not compatible with painting '{painting.Name}'.");
+                    throw new ValidationException($"Frame '{frame.Name}' is not compatible with painting '{paintingLabel}'.");
 
                 frameId = fid;
                 frameName = frame.Name;
@@ -101,7 +103,7 @@ public sealed class CartPricer
                 {
                     PaintingId = painting.Id,
                     PaintingCode = painting.Code,
-                    PaintingName = painting.Name,
+                    PaintingName = paintingLabel,
                     ThumbnailPath = thumbnail,
                     PaintingSizeId = size.Id,
                     SizeLabel = size.Label,
@@ -123,7 +125,7 @@ public sealed class CartPricer
                 {
                     PaintingId = painting.Id,
                     PaintingCode = painting.Code,
-                    PaintingName = painting.Name,
+                    PaintingName = paintingLabel,
                     ThumbnailPath = thumbnail,
                     PaintingSizeId = size.Id,
                     SizeLabel = size.Label,

@@ -87,9 +87,26 @@ public sealed class ImageService : IImageService, IDisposable
         var name = BuildFileName();
         var safeSub = SanitizeSubFolder(subFolder);
 
-        // Private original (relative to the private root; never publicly exposed).
-        var originalRel = $"{safeSub}/{name}{ext}";
-        await WriteBytesAsync(_privateStorageRoot, originalRel, bytes, cancellationToken);
+        // Private original (store a resized, space-saving JPEG rather than the full original to
+        // reduce storage usage while keeping enough quality for previews/compositing).
+        var privateExt = ".jpg";
+        var originalRel = $"{safeSub}/{name}{privateExt}";
+
+        using (var privateClone = image.Clone(ctx => ctx.Resize(new ResizeOptions
+        {
+            Mode = ResizeMode.Max,
+            Size = new Size(_settings.ResizedMaxDimension, _settings.ResizedMaxDimension)
+        })))
+        using (var flattened = privateClone.Clone(ctx => ctx.BackgroundColor(Color.White)))
+        using (var msPrivate = new MemoryStream())
+        {
+            flattened.Save(msPrivate, new JpegEncoder { Quality = _settings.JpegQuality });
+            var privateBytes = msPrivate.ToArray();
+            await WriteBytesAsync(_privateStorageRoot, originalRel, privateBytes, cancellationToken);
+
+            // Use the resized private bytes size as the recorded original size.
+            bytes = privateBytes; // update bytes for returned metadata
+        }
 
         // Public variants — bare filenames; the folder each lives in is implied by which field they populate.
         var resizedName = $"{name}_resized.jpg";

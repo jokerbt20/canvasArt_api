@@ -13,6 +13,10 @@ public class PromoCode
     /// <summary>Percentage (0–100) taken off the discounted goods total.</summary>
     public decimal DiscountPercentage { get; set; }
     public bool IsActive { get; set; } = true;
+    /// <summary>First day the code works; null = immediately.</summary>
+    public DateTime? StartsAt { get; set; }
+    /// <summary>Last day the code works (inclusive); null = no end.</summary>
+    public DateTime? EndsAt { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 

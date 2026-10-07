@@ -13,6 +13,9 @@ public record FrameListItemDto
     public decimal BasePrice { get; init; }
     public decimal FinalPrice { get; init; }
     public bool IsActive { get; init; }
+    /// <summary>Paintings this frame is offered with (compatibility links).</summary>
+    public int PaintingCount { get; init; }
+    public DateTime CreatedAt { get; init; }
 }
 
 public record FrameDetailDto

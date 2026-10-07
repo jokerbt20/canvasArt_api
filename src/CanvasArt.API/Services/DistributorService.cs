@@ -92,6 +92,8 @@ public sealed class DistributorService : IDistributorService
             Code = code,
             DiscountPercentage = request.DiscountPercentage,
             IsActive = request.IsActive,
+            StartsAt = request.StartsAt?.Date,
+            EndsAt = request.EndsAt?.Date,
             CreatedAt = now,
             UpdatedAt = now
         };
@@ -111,6 +113,8 @@ public sealed class DistributorService : IDistributorService
         existing.Code = code;
         existing.DiscountPercentage = request.DiscountPercentage;
         existing.IsActive = request.IsActive;
+        existing.StartsAt = request.StartsAt?.Date;
+        existing.EndsAt = request.EndsAt?.Date;
         existing.UpdatedAt = _clock.UtcNow;
 
         await _distributors.UpdatePromoCodeAsync(existing, cancellationToken);
@@ -144,6 +148,13 @@ public sealed class DistributorService : IDistributorService
 
         if (!promo.IsActive || !promo.DistributorIsActive)
             throw new ValidationException($"Promo code '{normalized}' is no longer active.");
+
+        // Date window: StartsAt/EndsAt are calendar days, EndsAt inclusive.
+        var now = _clock.UtcNow;
+        if (promo.StartsAt is { } startsAt && now < startsAt.Date)
+            throw new ValidationException($"Promo code '{normalized}' is not active yet.");
+        if (promo.EndsAt is { } endsAt && now >= endsAt.Date.AddDays(1))
+            throw new ValidationException($"Promo code '{normalized}' has expired.");
 
         return new ResolvedPromo(promo.Id, promo.DistributorId, promo.DistributorName ?? string.Empty, promo.Code, promo.DiscountPercentage);
     }

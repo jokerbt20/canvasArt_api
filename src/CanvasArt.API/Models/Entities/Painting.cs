@@ -4,7 +4,8 @@ public class Painting
 {
     public int Id { get; set; }
     public string Code { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
+    /// <summary>Optional. When null the site shows no title; cart/order lines use <see cref="Code"/>.</summary>
+    public string? Name { get; set; }
     public string Slug { get; set; } = string.Empty;
     public string? Description { get; set; }
     public string? Context { get; set; }

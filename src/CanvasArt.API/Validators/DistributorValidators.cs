@@ -30,6 +30,9 @@ public sealed class CreatePromoCodeRequestValidator : AbstractValidator<CreatePr
         RuleFor(x => x.Code).NotEmpty().MaximumLength(50);
         RuleFor(x => x.DiscountPercentage).GreaterThan(0).LessThanOrEqualTo(100)
             .WithMessage("Discount percentage must be between 0 and 100.");
+        RuleFor(x => x.EndsAt).GreaterThanOrEqualTo(x => x.StartsAt!.Value)
+            .When(x => x.StartsAt.HasValue && x.EndsAt.HasValue)
+            .WithMessage("End date must be on or after the start date.");
     }
 }
 
@@ -40,6 +43,9 @@ public sealed class UpdatePromoCodeRequestValidator : AbstractValidator<UpdatePr
         RuleFor(x => x.Code).NotEmpty().MaximumLength(50);
         RuleFor(x => x.DiscountPercentage).GreaterThan(0).LessThanOrEqualTo(100)
             .WithMessage("Discount percentage must be between 0 and 100.");
+        RuleFor(x => x.EndsAt).GreaterThanOrEqualTo(x => x.StartsAt!.Value)
+            .When(x => x.StartsAt.HasValue && x.EndsAt.HasValue)
+            .WithMessage("End date must be on or after the start date.");
     }
 }
 

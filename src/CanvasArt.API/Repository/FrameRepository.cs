@@ -36,7 +36,8 @@ public sealed class FrameRepository : RepositoryBase, IFrameRepository
             """;
 
         var sql = $"""
-            SELECT f.Id, f.Code, f.Name, f.Material, f.Color, f.ThumbnailPath, f.BasePrice, f.IsActive
+            SELECT f.Id, f.Code, f.Name, f.Material, f.Color, f.ThumbnailPath, f.BasePrice, f.IsActive, f.CreatedAt,
+                   (SELECT COUNT(1) FROM dbo.FrameCompatibilities fc WHERE fc.FrameId = f.Id) AS PaintingCount
             FROM dbo.Frames f
             {filters}
             ORDER BY {sortColumn} {direction}, f.Id DESC

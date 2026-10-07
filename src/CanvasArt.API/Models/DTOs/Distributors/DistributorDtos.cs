@@ -40,6 +40,11 @@ public record PromoCodeDto
     public string Code { get; init; } = string.Empty;
     public decimal DiscountPercentage { get; init; }
     public bool IsActive { get; init; }
+    public DateTime? StartsAt { get; init; }
+    /// <summary>Last valid day, inclusive.</summary>
+    public DateTime? EndsAt { get; init; }
+    /// <summary>Active and inside its date window right now — exactly what checkout accepts.</summary>
+    public bool IsCurrentlyValid { get; init; }
     public DateTime CreatedAt { get; init; }
 }
 
@@ -49,6 +54,9 @@ public record CreatePromoCodeRequest
     public string Code { get; init; } = string.Empty;
     public decimal DiscountPercentage { get; init; }
     public bool IsActive { get; init; } = true;
+    public DateTime? StartsAt { get; init; }
+    /// <summary>Last valid day, inclusive.</summary>
+    public DateTime? EndsAt { get; init; }
 }
 
 public record UpdatePromoCodeRequest
@@ -56,6 +64,9 @@ public record UpdatePromoCodeRequest
     public string Code { get; init; } = string.Empty;
     public decimal DiscountPercentage { get; init; }
     public bool IsActive { get; init; } = true;
+    public DateTime? StartsAt { get; init; }
+    /// <summary>Last valid day, inclusive.</summary>
+    public DateTime? EndsAt { get; init; }
 }
 
 // ----- Public code application (storefront preview) -----
